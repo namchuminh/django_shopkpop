@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+{{ title }}
+{% endblock title %}
+
 {% block content%}
 <div class="ltn__utilize-overlay"></div>
 <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
@@ -242,7 +246,7 @@
             </div>
         </div>
         <div class="row ltn__related-product-slider-one-active slick-arrow-1 slick-initialized slick-slider"><a
-                class="slick-prev slick-arrow" style=""><i class="icon-arrow-left" alt="Arrow Icon"></i></a>
+                class="slick-prev slick-arrow"><i class="icon-arrow-left" alt="Arrow Icon"></i></a>
             <!-- ltn__product-item -->
             <div aria-live="polite" class="slick-list draggable">
                 <div class="slick-track" style="opacity: 1; width: 4264px; transform: translate3d(-1312px, 0px, 0px);"
@@ -926,7 +930,7 @@
             <!-- ltn__product-item -->
 
             <!--  -->
-            <a class="slick-next slick-arrow" style=""><i class="icon-arrow-right" alt="Arrow Icon"></i></a>
+            <a class="slick-next slick-arrow"><i class="icon-arrow-right" alt="Arrow Icon"></i></a>
         </div>
     </div>
 </div>

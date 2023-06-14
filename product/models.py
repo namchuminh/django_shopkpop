@@ -3,7 +3,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class SanPham(models.Model):
-    TenSanPham = models.CharField(max_length=255)
+    TenSanPham = models.CharField(max_length=255, unique=True)
     GiaKhuyenMai = models.IntegerField(blank=False, null=False)
     GiaBan = models.IntegerField(blank=False, null=False)
     PhanTramGiam = models.IntegerField(blank=True, null=True)
