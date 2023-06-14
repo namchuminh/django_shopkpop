@@ -7,9 +7,12 @@
 <!-- SLIDER AREA START (slider-6) -->
 <div class="ltn__slider-area ltn__slider-3 ltn__slider-6 section-bg-1">
     <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white---">
+        
+        {% for item in slide %}
+        
         <!-- ltn__slide-item  -->
         <div class="ltn__slide-item ltn__slide-item-8 text-color-white---- bg-image bg-overlay-theme-black-80---"
-            data-bs-bg="img/slider/1.jpg">
+            data-bs-bg="{{ item.HinhAnh.url }}">
             <div class="ltn__slide-item-inner">
                 <div class="container">
                     <div class="row">
@@ -18,64 +21,27 @@
                                 <div class="slide-item-info-inner ltn__slide-animation">
                                     <div class="slide-item-info">
                                         <div class="slide-item-info-inner ltn__slide-animation">
-                                            <h1 class="slide-title animated ">Fresh Flower</h1>
+                                            <h1 class="slide-title animated ">{{ item.TieuDe }}</h1>
                                             <h6 class="slide-sub-title ltn__body-color slide-title-line animated">
-                                                Natural & Beautiful Flower Here</h6>
+                                                {{ item.MoTaNgan }}</h6>
                                             <div class="slide-brief animated">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore.</p>
+                                                <p>{{ item.MoTaDai }}</p>
                                             </div>
                                             <div class="btn-wrapper animated">
-                                                <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
+                                                <a href="service.html" class="theme-btn-1 btn btn-round">Mua Ngay</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="slide-item-img">
-                                <img src="img/slider/41-1.png" alt="#">
-                                <span class="call-to-circle-1"></span>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ltn__slide-item  -->
-        <div class="ltn__slide-item ltn__slide-item-8 text-color-white---- bg-image bg-overlay-theme-black-80---"
-            data-bs-bg="img/slider/3.jpg">
-            <div class="ltn__slide-item-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 align-self-center">
-                            <div class="slide-item-info">
-                                <div class="slide-item-info-inner ltn__slide-animation">
-                                    <div class="slide-item-info">
-                                        <div class="slide-item-info-inner ltn__slide-animation">
-                                            <h1 class="slide-title animated ">Fresh Flower</h1>
-                                            <h6 class="slide-sub-title ltn__body-color slide-title-line animated">
-                                                Natural & Beautiful Flower Here</h6>
-                                            <div class="slide-brief animated">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore.</p>
-                                            </div>
-                                            <div class="btn-wrapper animated">
-                                                <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="slide-item-img">
-                                <img src="img/slider/41-1.png" alt="#">
-                                <span class="call-to-circle-1"></span>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--  -->
+
+        {% endfor %}
+        
     </div>
 </div>
 <!-- SLIDER AREA END -->
@@ -89,38 +55,38 @@
                     class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6 position-relative">
                     <div class="ltn__feature-item ltn__feature-item-8">
                         <div class="ltn__feature-icon">
-                            <img src="img/icons/svg/8-trolley.svg" alt="#">
+                            <img src="{% static 'img/icons/svg/8-trolley.svg' %}" alt="#">
                         </div>
                         <div class="ltn__feature-info">
-                            <h4>Free shipping</h4>
-                            <p>On all orders over $49.00</p>
+                            <h4>Miễn Phí Giao Hàng</h4>
+                            <p>Sản phẩm trên 100k</p>
                         </div>
                     </div>
                     <div class="ltn__feature-item ltn__feature-item-8">
                         <div class="ltn__feature-icon">
-                            <img src="img/icons/svg/9-money.svg" alt="#">
+                            <img src="{% static 'img/icons/svg/9-money.svg' %}" alt="#">
                         </div>
                         <div class="ltn__feature-info">
-                            <h4>15 days returns</h4>
-                            <p>Moneyback guarantee</p>
+                            <h4>15 Ngày Đổi Trả</h4>
+                            <p>Hoàn tiền và đổi trả</p>
                         </div>
                     </div>
                     <div class="ltn__feature-item ltn__feature-item-8">
                         <div class="ltn__feature-icon">
-                            <img src="img/icons/svg/10-credit-card.svg" alt="#">
+                            <img src="{% static 'img/icons/svg/10-credit-card.svg' %}" alt="#">
                         </div>
                         <div class="ltn__feature-info">
-                            <h4>Secure checkout</h4>
-                            <p>Protected by Paypal</p>
+                            <h4>Thanh Toán</h4>
+                            <p>An toàn & bảo mật</p>
                         </div>
                     </div>
                     <div class="ltn__feature-item ltn__feature-item-8">
                         <div class="ltn__feature-icon">
-                            <img src="img/icons/svg/11-gift-card.svg" alt="#">
+                            <img src="{% static 'img/icons/svg/11-gift-card.svg' %}" alt="#">
                         </div>
                         <div class="ltn__feature-info">
-                            <h4>Offer & gift here</h4>
-                            <p>On all orders over</p>
+                            <h4>Quà Tặng</h4>
+                            <p>Khuyến mãi & giảm giá</p>
                         </div>
                     </div>
                 </div>
@@ -134,27 +100,17 @@
 <div class="ltn__banner-area  mt-80">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/1.jpg" alt="Banner Image"></a>
+
+            {% for item in bannertop %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img style="height: 268px; width: 100%; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/2.jpg" alt="Banner Image"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/3.jpg" alt="Banner Image"></a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
         </div>
     </div>
 </div>
@@ -166,353 +122,44 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area text-center">
-                    <h1 class="section-title section-title-border">new arrival items</h1>
+                    <h1 class="section-title section-title-border">Sản Phẩm Mới</h1>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-2">10%</li>
-                            </ul>
+            {% for item in sanpham %}
+                <!-- ltn__product-item -->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="ltn__product-item text-center">
+                        <div class="product-img">
+                            <a href="{% url 'detail_product' slug=item.DuongDan %}"><img style="height: 374px;" src="{{ item.AnhChinh.url }}" alt="#"></a>
+                            <div class="product-badge">
+                                <ul>
+                                    <li class="badge-2">- {{ item.PhanTramGiam }}%</li>
+                                </ul>
+                            </div>
+                            <div class="product-hover-action product-hover-action-2">
+                                <ul>
+                                    <li class="add-to-cart">
+                                        <a href="#" title="Add to Cart" data-bs-toggle="modal"
+                                            data-bs-target="#add_to_cart_modal">
+                                            <span class="cart-text d-none d-xl-block">Thêm Giỏ Hàng</span>
+                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Pink Flower Tree</a></h2>
-                        <div class="product-price">
-                            <span>$18.00</span>
-                            <del>$21.00</del>
+                        <div class="product-info">
+                            <h2 class="product-title"><a href="{% url 'detail_product' slug=item.DuongDan %}">{{ item.TenSanPham }}</a></h2>
+                            <div class="product-price">
+                                <span>{{ item.GiaBan }}đ</span>
+                                <del>{{ item.GiaKhuyenMai }}đ</del>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Premium Joyful</a></h2>
-                        <div class="product-price">
-                            <span>$18.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-2">12%</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">The White Rose</a></h2>
-                        <div class="product-price">
-                            <span>$16.00</span>
-                            <del>$19.00</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Red Rose Bouquet</a></h2>
-                        <div class="product-price">
-                            <span>$20.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Heart's Desire</a></h2>
-                        <div class="product-price">
-                            <span>$15.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-2">15%</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ltn__product-countdown">
-                            <div class="ltn__countdown" data-countdown="2021/12/25"></div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Assorted Roses</a></h2>
-                        <div class="product-price">
-                            <span>$17.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/7.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Roses Surprise</a></h2>
-                        <div class="product-price">
-                            <span>$12.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/8.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">12%</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Tropical Peace Lily</a></h2>
-                        <div class="product-price">
-                            <span>$14</span>
-                            <del>$25.00</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -522,20 +169,15 @@
 <div class="ltn__banner-area ">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/6.jpg" alt="Banner Image"></a>
+            {% for item in bannermid %}
+                <div class="col-md-6">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img style="width: 100%; height: 268px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/7.jpg" alt="Banner Image"></a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -547,7 +189,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area text-center">
-                    <h1 class="section-title section-title-border">top products</h1>
+                    <h1 class="section-title section-title-border">Top Sản Phẩm</h1>
                 </div>
             </div>
         </div>
@@ -595,175 +237,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__product-item -->
-            <div class="col-12">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Premium Joyful</a></h2>
-                        <div class="product-price">
-                            <span>$18.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-12">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-2">12%</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">The White Rose</a></h2>
-                        <div class="product-price">
-                            <span>$16.00</span>
-                            <del>$19.00</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-12">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Red Rose Bouquet</a></h2>
-                        <div class="product-price">
-                            <span>$20.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__product-item -->
-            <div class="col-12">
-                <div class="ltn__product-item text-center">
-                    <div class="product-img">
-                        <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
-                        <div class="product-badge">
-                            <ul>
-                                <li class="badge-1">Hot</li>
-                            </ul>
-                        </div>
-                        <div class="product-hover-action product-hover-action-2">
-                            <ul>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                <li class="add-to-cart">
-                                    <a href="#" title="Add to Cart" data-bs-toggle="modal"
-                                        data-bs-target="#add_to_cart_modal">
-                                        <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                        <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Quick View" data-bs-toggle="modal"
-                                        data-bs-target="#quick_view_modal">
-                                        <i class="icon-shuffle"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title"><a href="product-details.html">Heart's Desire</a></h2>
-                        <div class="product-price">
-                            <span>$15.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -773,13 +247,15 @@
 <div class="ltn__banner-area ">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="ltn__banner-item">
-                    <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/10.jpg" alt="Banner Image"></a>
+            {% for item in bannerbottom %}
+                <div class="col-md-12">
+                    <div class="ltn__banner-item">
+                        <div class="ltn__banner-img">
+                            <a href="shop.html"><img style="width: 100%; height: 402px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
