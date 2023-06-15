@@ -108,7 +108,8 @@ class DetailProduct(View):
         
         try:
             sanpham = SanPham.objects.all().get(DuongDan=slug)
-            data = {"sanpham": sanpham, "title": "Sản Phẩm " + sanpham.TenSanPham}
+            sanphamlienquan = SanPham.objects.all().filter(ChuyenMuc=sanpham.ChuyenMuc).order_by('?')[:4]
+            data = {"sanpham": sanpham, "title": "Sản Phẩm " + sanpham.TenSanPham, "sanphamlienquan": sanphamlienquan}
             return render(request, self.template_name, data)
         except:
             return render(request, template_error)
