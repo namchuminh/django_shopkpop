@@ -32,7 +32,7 @@
                                                 <p>{{ item.MoTaDai }}</p>
                                             </div>
                                             <div class="btn-wrapper animated">
-                                                <a href="service.html" class="theme-btn-1 btn btn-round">Mua Ngay</a>
+                                                <a href="{% url 'detail_category' slug=item.ChuyenMuc.DuongDan %}" class="theme-btn-1 btn btn-round">Mua Ngay</a>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img style="height: 268px; width: 100%; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                            <a href="{% url 'detail_category' slug=item.ChuyenMuc.DuongDan %}"><img style="height: 268px; width: 100%; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                 <div class="col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img style="width: 100%; height: 268px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                            <a href="{% url 'detail_category' slug=item.ChuyenMuc.DuongDan %}"><img style="width: 100%; height: 268px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
@@ -255,7 +255,7 @@
                 <div class="col-md-12">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img style="width: 100%; height: 402px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                            <a href="{% url 'detail_category' slug=item.ChuyenMuc.DuongDan %}"><img style="width: 100%; height: 402px; image-rendering: -webkit-optimize-contrast;" src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>

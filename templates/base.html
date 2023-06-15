@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="site-logo">
-                            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
                         </div>
                     </div>
                     <div class="col header-contact-serarch-column d-none d-xl-block">
@@ -37,14 +37,14 @@
                                     <i class="icon-phone"></i>
                                 </div>
                                 <div class="header-feature-info">
-                                    <h6>Phone</h6>
-                                    <p><a href="tel:0123456789">+0123-456-789</a></p>
+                                    <h6>Số Điện Thoại</h6>
+                                    <p><a href="tel:0123456789">0999.888.888</a></p>
                                 </div>
                             </div>
                             <!-- header-search-2 -->
                             <div class="header-search-2">
-                                <form id="#123" method="get"  action="#">
-                                    <input type="text" name="search" value="" placeholder="Search here..."/>
+                                <form action="{% url 'product' %}">
+                                    <input type="text" name="s" value="" placeholder="Nhập tên sản phẩm cần tìm..."/>
                                     <button type="submit">
                                         <span><i class="icon-magnifier"></i></span>
                                     </button>
@@ -118,7 +118,7 @@
                                                 <i class="icon-handbag"></i>
                                                 <sup>2</sup>
                                             </span>
-                                            <h6><span>Your Cart</span> <span class="ltn__secondary-color">$89.25</span></h6>
+                                            <h6><span>Giỏ Hàng</span> <span class="ltn__secondary-color">$89.25</span></h6>
                                         </a>
                                     </div>
                                 </li>
@@ -156,14 +156,8 @@
                             <nav>
                                 <div class="ltn__main-menu">
                                     <ul>
-                                        <li class="menu-icon"><a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="index.html">Home Style - 01</a></li>
-                                                <li><a href="index-2.html">Home Style - 02</a></li>
-                                                <li><a href="index-3.html">Home Style - 03</a></li>
-                                                <li><a href="index-4.html">Home Style - 04</a></li>
-                                            </ul>
-                                        </li>
+                                        <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                                        <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
                                         <li class="menu-icon"><a href="#">Pages</a>
                                             <ul class="mega-menu">
                                                 <li><a href="#">Inner Pages</a>
@@ -326,21 +320,15 @@
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="ltn__utilize-menu-search-form">
-                <form action="#">
-                    <input type="text" placeholder="Search...">
-                    <button><i class="icon-magnifier"></i></button>
+                <form action="{% url 'product' %}">
+                    <input type="text" name="s" placeholder="Nhập tên sản phẩm cần tìm...">
+                    <button type="submit"><i class="icon-magnifier"></i></button>
                 </form>
             </div>
             <div class="ltn__utilize-menu">
                 <ul>
-                    <li><a href="#">Home</a>
-                        <ul class="sub-menu">
-                            <li><a href="index.html">Home Style - 01</a></li>
-                            <li><a href="index-2.html">Home Style - 02</a></li>
-                            <li><a href="index-3.html">Home Style - 03</a></li>
-                            <li><a href="index-4.html">Home Style - 04</a></li>
-                        </ul>
-                    </li>
+                    <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                    <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="#">Shop</a>
                         <ul class="sub-menu">
