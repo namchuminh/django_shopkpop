@@ -1,2 +1,3 @@
 django-bootstrap-pagination
 django
+django-ckeditor
