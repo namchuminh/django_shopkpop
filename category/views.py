@@ -8,13 +8,10 @@ template_error = '404error.html'
 class Category(View):
     template_name = 'category/list.html'
     
-    def get(self, request, slug):
-        if slug is None:
-            return redirect('category')
-        
+    def get(self, request):
         try:
-            sanpham = SanPham.objects.all().get(DuongDan=slug)
-            data = {"sanpham": sanpham, "title": "Sản Phẩm " + sanpham.TenSanPham}
+            chuyenmuc = ChuyenMuc.objects.all()
+            data = {"chuyenmuc": chuyenmuc, "title": "Chuyên Mục Sản Phẩm"}
             return render(request, self.template_name, data)
         except:
             return render(request, template_error)

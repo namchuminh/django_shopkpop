@@ -33,6 +33,7 @@ class SanPham(models.Model):
 class ChuyenMuc(models.Model):
     TenChuyenMuc = models.CharField(max_length=255)
     DuongDan = models.SlugField(blank=True, null=True)
+    HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

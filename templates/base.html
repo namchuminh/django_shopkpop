@@ -1,15 +1,23 @@
 {% load static %}
 <!doctype html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ShopKPOP.com - {% block title%}{% endblock title %}</title>
+    <title>
+        {% for item in thongtin_load %}
+            {% if item.LoaiThongTin.MaLoai == 'tieudeweb' %}
+                {{ item.GiaTri }}
+            {% endif %}
+        {% endfor %} - {% block title%}{% endblock title %}</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon" />
+    {% for item in thongtin_load %}
+        {% if item.LoaiThongTin.MaLoai == 'favicon' %}
+            <link rel="shortcut icon" href="{{ item.HinhAnh.url }}" type="image/x-icon" />
+        {% endif %}
+    {% endfor %}
     <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -26,7 +34,11 @@
                 <div class="row">
                     <div class="col">
                         <div class="site-logo">
-                            <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'logo' %}
+                                    <a href="{% url 'home' %}"><img src="{{ item.HinhAnh.url }}" alt="Logo"></a>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col header-contact-serarch-column d-none d-xl-block">
@@ -38,7 +50,14 @@
                                 </div>
                                 <div class="header-feature-info">
                                     <h6>Số Điện Thoại</h6>
-                                    <p><a href="tel:0123456789">0999.888.888</a></p>
+                                    <p><a href="tel:0999888888">
+                                            {% for item in thongtin_load %}
+                                                {% if item.LoaiThongTin.MaLoai == 'sodienthoai' %}
+                                                    {{ item.GiaTri }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                             <!-- header-search-2 -->
@@ -56,45 +75,7 @@
                         <!-- header-options -->
                         <div class="ltn__header-options">
                             <ul>
-                                <li class="d-none">
-                                    <!-- ltn__currency-menu -->
-                                    <div class="ltn__drop-menu ltn__currency-menu">
-                                        <ul>
-                                            <li><a href="#" class="dropdown-toggle"><span class="active-currency">USD</span></a>
-                                                <ul>
-                                                    <li><a href="login.html">USD - US Dollar</a></li>
-                                                    <li><a href="wishlist.html">CAD - Canada Dollar</a></li>
-                                                    <li><a href="register.html">EUR - Euro</a></li>
-                                                    <li><a href="account.html">GBP - British Pound</a></li>
-                                                    <li><a href="wishlist.html">INR - Indian Rupee</a></li>
-                                                    <li><a href="wishlist.html">BDT - Bangladesh Taka</a></li>
-                                                    <li><a href="wishlist.html">JPY - Japan Yen</a></li>
-                                                    <li><a href="wishlist.html">AUD - Australian Dollar</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="d-none">
-                                    <!-- header-search-1 -->
-                                    <div class="header-search-wrap">
-                                        <div class="header-search-1">
-                                            <div class="search-icon">
-                                                <i class="icon-magnifier  for-search-show"></i>
-                                                <i class="icon-magnifier-remove  for-search-close"></i>
-                                            </div>
-                                        </div>
-                                        <div class="header-search-1-form">
-                                            <form id="#" method="get"  action="#">
-                                                <input type="text" name="search" value="" placeholder="Search here..."/>
-                                                <button type="submit">
-                                                    <span><i class="icon-magnifier"></i></span>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-none"> 
+                                <li class=""> 
                                     <!-- user-menu -->
                                     <div class="ltn__drop-menu user-menu">
                                         <ul>
@@ -149,7 +130,11 @@
                     <div class="col header-menu-column justify-content-center">
                         <div class="sticky-logo">
                             <div class="site-logo">
-                                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                {% for item in thongtin_load %}
+                                    {% if item.LoaiThongTin.MaLoai == 'logo' %}
+                                        <a href="{% url 'home' %}"><img src="{{ item.HinhAnh.url }}" alt="Logo"></a>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="header-menu header-menu-2">
@@ -158,6 +143,13 @@
                                     <ul>
                                         <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
                                         <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
+                                        <li class="menu-icon"><a href="{% url 'category' %}">Chuyên Mục</a>
+                                            <ul>
+                                                {% for item in chuyenmuc_load %}
+                                                    <li><a href="{% url 'detail_category' slug=item.DuongDan %}">{{ item.TenChuyenMuc }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
                                         <li class="menu-icon"><a href="#">Pages</a>
                                             <ul class="mega-menu">
                                                 <li><a href="#">Inner Pages</a>
@@ -217,13 +209,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="menu-icon"><a href="#">Portfolio</a>
-                                            <ul>
-                                                <li><a href="portfolio.html">Portfolio</a></li>
-                                                <li><a href="portfolio-2.html">Portfolio - 02</a></li>
-                                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                            </ul>
-                                        </li>
+                                        
                                         <li class="menu-icon"><a href="#">News</a>
                                             <ul>
                                                 <li><a href="blog.html">News</a></li>
@@ -250,7 +236,7 @@
     <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Cart</span>
+                <span class="ltn__utilize-menu-title">Giỏ Hàng</span>
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="mini-cart-product-area ltn__scrollbar">
@@ -315,7 +301,7 @@
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
                 <div class="site-logo">
-                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                    <a href="{% url 'home' %}"><img src="img/logo.png" alt="Logo"></a>
                 </div>
                 <button class="ltn__utilize-close">×</button>
             </div>
@@ -329,6 +315,13 @@
                 <ul>
                     <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
                     <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
+                    <li><a href="{% url 'category' %}">Chuyên Mục</a>
+                        <ul class="sub-menu">
+                            {% for item in chuyenmuc_load %}
+                                <li><a href="{% url 'detail_category' slug=item.DuongDan %}">{{ item.TenChuyenMuc }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="#">Shop</a>
                         <ul class="sub-menu">
@@ -419,41 +412,15 @@
     <div class="ltn__brand-logo-area  ltn__brand-logo-1 section-bg-1 pt-35 pb-35 plr--5">
         <div class="container-fluid">
             <div class="row ltn__brand-logo-active">
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/1.png" alt="Brand Logo">
+
+                {% for item in nhataitro_load %}
+                    <div class="col-lg-12">
+                        <div class="ltn__brand-logo-item">
+                            <img src="{{ item.HinhAnh.url }}" alt="Brand Logo">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/2.png" alt="Brand Logo">
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/3.png" alt="Brand Logo">
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/4.png" alt="Brand Logo">
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/5.png" alt="Brand Logo">
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/1.png" alt="Brand Logo">
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__brand-logo-item">
-                        <img src="img/brand-logo/2.png" alt="Brand Logo">
-                    </div>
-                </div>
+                {% endfor %}
+                
             </div>
         </div>
     </div>
@@ -522,51 +489,65 @@
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-about-widget">
-                            <h4 class="footer-title">About Our Shop</h4>
+                            <h4 class="footer-title">VỀ CHÚNG TÔI</h4>
                             <div class="footer-logo d-none">
                                 <div class="site-logo">
                                     <img src="img/logo.png" alt="Logo">
                                 </div>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo incididunt ut labore et dolore</p>
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'gioithieu' %}
+                                    <p>{{ item.GiaTri }}</p>
+                                {% endif %}
+                            {% endfor %}
+                            
                             <div class="footer-address">
                                 <ul>
-                                    <li>
-                                        <div class="footer-address-icon">
-                                            <i class="icon-location-pin"></i>
-                                        </div>
-                                        <div class="footer-address-info">
-                                            <p>Brooklyn, New York, United States</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="footer-address-icon">
-                                            <i class="icon-phone"></i>
-                                        </div>
-                                        <div class="footer-address-info">
-                                            <p><a href="tel:+0123-456789">+0123-456789</a></p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="footer-address-icon">
-                                            <i class="icon-envelope"></i>
-                                        </div>
-                                        <div class="footer-address-info">
-                                            <p><a href="mailto:example@example.com">example@example.com</a></p>
-                                        </div>
-                                    </li>
+                                    {% for item in thongtin_load %}
+                                        {% if item.LoaiThongTin.MaLoai == 'diachi' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-location-pin"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p>{{ item.GiaTri }}</p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if item.LoaiThongTin.MaLoai == 'sodienthoai' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-phone"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="">{{ item.GiaTri }}</a></p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if item.LoaiThongTin.MaLoai == 'email' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-envelope"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="mailto:{{ item.GiaTri }}">{{ item.GiaTri }}</a></p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+
                                 </ul>
                             </div>
-                            <div class="ltn__social-media mt-20 d-none">
+                            <div class="ltn__social-media mt-20">
                                 <ul>
                                     <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                                     <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
-                            </div>
-                            <div class="footer-payment-img">
-                                <img src="img/icons/payment-6.png" alt="Payment Image">
                             </div>
                         </div>
                     </div>
@@ -579,26 +560,13 @@
                     <div class="col-md-6 col-12">
                         <div class="footer-copyright-left">
                             <div class="ltn__copyright-design clearfix">
-                                <p>&copy; <span class="current-year"></span> - Just For You</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 align-self-center">
-                        <div class="footer-copyright-right text-right">
-                            <div class="ltn__copyright-menu d-none">
-                                <ul>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Claim</a></li>
-                                    <li><a href="#">Privacy & Policy</a></li>
-                                </ul>
-                            </div>
-                            <div class="ltn__social-media ">
-                                <ul>
-                                    <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
-                                    <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
-                                    <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
-                                </ul>
+                                <p>&copy; <span class="current-year"></span> - Bản quyền thuộc 
+                                    {% for item in thongtin_load %}
+                                        {% if item.LoaiThongTin.MaLoai == 'tieudeweb' %}
+                                            {{ item.GiaTri }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
                             </div>
                         </div>
                     </div>
