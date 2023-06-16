@@ -13,9 +13,15 @@ class TinTuc(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = "Bài Viết"
+        verbose_name_plural = "Bài Viết"
+    
     def save(self, *args, **kwargs):
         self.DuongDan = slugify(self.TieuDe)
         super(TinTuc, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.TieuDe
+    
+    

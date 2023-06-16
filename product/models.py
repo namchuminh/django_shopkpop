@@ -21,6 +21,11 @@ class SanPham(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = "Sản Phẩm"
+        verbose_name_plural = "Sản Phẩm"
+        
+        
     def save(self, *args, **kwargs):
         self.DuongDan = slugify(self.TenSanPham)
         self.PhanTramGiam = ((self.GiaKhuyenMai - self.GiaBan) / self.GiaKhuyenMai) * 100
@@ -37,6 +42,10 @@ class ChuyenMuc(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = "Chuyên Mục"
+        verbose_name_plural = "Chuyên Mục"
+        
     def save(self, *args, **kwargs):
         self.DuongDan = slugify(self.TenChuyenMuc)
         super(ChuyenMuc, self).save(*args, **kwargs)
@@ -51,5 +60,9 @@ class MauSac(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = "Màu Sắc"
+        verbose_name_plural = "Màu Sắc"
+        
     def __str__(self):
         return self.TenMauSac

@@ -42,6 +42,10 @@ class NhaTaiTro(models.Model):
     TenNhaTaiTro = models.CharField(max_length=255)
     HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True, default="uploads/1.png")
     
+    class Meta:
+        verbose_name = "Nhà Tài Trợ"
+        verbose_name_plural = "Nhà Tài Trợ"
+    
     def __str__(self):
         return self.TenNhaTaiTro
     
@@ -57,6 +61,10 @@ class ThongTin(models.Model):
     GiaTri = models.CharField(max_length=255, blank=True, null=True)
     HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True)
     
+    class Meta:
+        verbose_name = "Thông Tin"
+        verbose_name_plural = "Thông Tin"
+        
     def __str__(self):
         return self.LoaiThongTin.TenLoai
 
