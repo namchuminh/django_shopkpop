@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('website.urls')),
     path('san-pham/', include('product.urls')),
     path('chuyen-muc/', include('category.urls')),
+    path('tin-tuc/', include('news.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

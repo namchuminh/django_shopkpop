@@ -271,137 +271,39 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area text-center">
-                    <h1 class="section-title section-title-border">latest news</h1>
+                    <h1 class="section-title section-title-border">Tin Tức Mới</h1>
                 </div>
             </div>
         </div>
-        <div class="row  ltn__blog-slider-one-active slick-arrow-1">
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author d-none">
-                                    <a href="#">by: Admin</a>
-                                </li>
-                                <li>
-                                    <span> Nov 18, 2020</span>
-                                </li>
-                                <li class="ltn__blog-comment">
-                                    <a href="#"><i class="icon-speech"></i> 2</a>
-                                </li>
-                            </ul>
+        <div class="row ltn__blog-slider-one-active slick-arrow-1">
+
+            {% for item in tintuc %}
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item">
+                        <div class="ltn__blog-img">
+                            <a href="{% url 'detail_news' slug=item.DuongDan %}"><img style="height: 258px; width: 100%;" src="{{ item.AnhChinh.url }}" alt="#"></a>
                         </div>
-                        <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit
-                                amet con adipisicing elit sed </a></h3>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author d-none">
+                                        <a href="#">by: Admin</a>
+                                    </li>
+                                    <li>
+                                        <span> {{ item.created_at }}</span>
+                                    </li>
+                                    <li class="ltn__blog-comment">
+                                        <a href="#"><i class="icon-speech"></i> {{ item.The }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title blog-title-line"><a href="{% url 'detail_news' slug=item.DuongDan %}">{{ item.TieuDe }} </a></h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/2.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author d-none">
-                                    <a href="#">by: Admin</a>
-                                </li>
-                                <li>
-                                    <span> Nov 18, 2020</span>
-                                </li>
-                                <li class="ltn__blog-comment">
-                                    <a href="#"><i class="icon-speech"></i> 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit
-                                amet con adipisicing elit sed </a></h3>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/3.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author d-none">
-                                    <a href="#">by: Admin</a>
-                                </li>
-                                <li>
-                                    <span> Nov 18, 2020</span>
-                                </li>
-                                <li class="ltn__blog-comment">
-                                    <a href="#"><i class="icon-speech"></i> 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit
-                                amet con adipisicing elit sed </a></h3>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/4.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author d-none">
-                                    <a href="#">by: Admin</a>
-                                </li>
-                                <li>
-                                    <span> Nov 18, 2020</span>
-                                </li>
-                                <li class="ltn__blog-comment">
-                                    <a href="#"><i class="icon-speech"></i> 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit
-                                amet con adipisicing elit sed </a></h3>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="img/blog/5.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author d-none">
-                                    <a href="#">by: Admin</a>
-                                </li>
-                                <li>
-                                    <span> Nov 18, 2020</span>
-                                </li>
-                                <li class="ltn__blog-comment">
-                                    <a href="#"><i class="icon-speech"></i> 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit
-                                amet con adipisicing elit sed </a></h3>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
+            {% endfor %}
+            
+
         </div>
     </div>
 </div>

@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%}
+{{ title }}
+{% endblock title %}
+
+{% block content%}
+<div class="ltn__utilize-overlay"></div>
+<div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner text-center">
+                    <h1 class="ltn__page-title">Tin Tức</h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Trang Chủ</a></li>
+                            <li><a href="{% url 'list_news' %}">Tin Tức</a></li>
+                            <li>{{ tieude }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ltn__page-details-area ltn__blog-details-area mb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ltn__blog-details-wrap">
+                    <div class="ltn__page-details-inner ltn__blog-details-inner">
+                        <div class="ltn__blog-meta">
+                            <ul>
+                                <li class="ltn__blog-author d-none">
+                                    <a href="#">by: Admin</a>
+                                </li>
+                                <li>
+                                    <span> {{ tintuc.created_at }}</span>
+                                </li>
+                                <li class="ltn__blog-comment">
+                                    <a href="#"><i class="icon-speech"></i> {{ tintuc.The }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <h3 class="ltn__blog-title blog-title-line animated fadeIn"><a
+                                href="{% url 'detail_news' slug=tintuc.DuongDan %}">{{ tintuc.TieuDe }}</a></h3>
+                        {{ tintuc.NoiDung|safe }}
+                    </div>
+
+                    <!-- blog-tags-social-media -->
+                    <div class="ltn__blog-tags-social-media mt-20 row">
+                        <div class="ltn__tagcloud-widget col-lg-7">
+                            <h4>Thẻ: </h4>
+                            <ul>
+                                {% for item in the %}
+                                <li>
+                                    <a href="#">{{ item }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="ltn__social-media text-right col-lg-5">
+                            <h4>Share: </h4>
+                            <ul>
+                                <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
+                                <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
+                                <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
+                                <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- prev-next-btn -->
+                    <div class="ltn__prev-next-btn row mb-50">
+                        {% if prev_news %}
+                            <div class="blog-prev col-lg-6">
+                                <div class="blog-prev-next-img">
+                                    <a href="{% url 'detail_news' slug=prev_news.DuongDan %}"><img style="width: 100%; height: 72px;" src="{{ prev_news.AnhChinh.url }}" alt="Image"></a>
+                                </div>
+                                <div class="blog-prev-next-info">
+                                    <p>Bài trước</p>
+                                    <h3 class="ltn__blog-title animated fadeIn"><a href="{% url 'detail_news' slug=prev_news.DuongDan %}">{{ prev_news.TieuDe }}</a></h3>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if next_news %}
+                            <div class="blog-prev blog-next text-right col-lg-6">
+                                <div class="blog-prev-next-info">
+                                    <p>Bài sau</p>
+                                    <h3 class="ltn__blog-title animated fadeIn"><a href="{% url 'detail_news' slug=next_news.DuongDan %}"> {{ next_news.TieuDe }}</a></h3>
+                                </div>
+                                <div class="blog-prev-next-img">
+                                    <a href="{% url 'detail_news' slug=next_news.DuongDan %}"><img style="width: 100%; height: 72px;" src="{{ next_news.AnhChinh.url }}" alt="Image"></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <!-- comment-area -->
+                    <div class="ltn__comment-area mb-50">
+                        <h4 class="title-2">03 Comments</h4>
+                        <div class="ltn__comment-inner">
+                            <ul>
+                                
+                                <li>
+                                    <div class="ltn__comment-item clearfix">
+                                        <div class="ltn__commenter-img">
+                                            <img src="img/testimonial/4.jpg" alt="Image">
+                                        </div>
+                                        <div class="ltn__commenter-comment">
+                                            <h6><a href="#">Adam Smit</a></h6>
+                                            <span class="comment-date">25th May 2020</span>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
+                                                omnis fugit corporis iste magnam ratione.</p>
+                                            <a href="#" class="ltn__comment-reply-btn"><i
+                                                    class="icon-reply-1"></i>Reply</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- comment-reply -->
+                    <div class="ltn__comment-reply-area ltn__form-box">
+                        <h4 class="title-2">Bình Luận </h4>
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <textarea placeholder="Nhập bình luận...."></textarea>
+                                    <div class="btn-wrapper">
+                                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Đăng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <aside class="sidebar-area blog-sidebar ltn__right-sidebar">
+                    <!-- Search Widget -->
+                    <div class="widget ltn__search-widget">
+                        <form action="{% url 'list_news' %}">
+                            <input type="text" name="s" placeholder="Tìm kiếm bài viết...">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Popular Post Widget -->
+                    <div class="widget ltn__popular-post-widget">
+                        <h4 class="ltn__widget-title">Tin Tức Mới</h4>
+                        <ul>
+
+                            {% for item in tintucmoi %}
+                            <li>
+                                <div class="popular-post-widget-item clearfix">
+                                    <div class="popular-post-widget-img">
+                                        <a href="{% url 'detail_news' slug=item.DuongDan %}"><img
+                                                style="width: 80px; height: 80px;" src="{{ item.AnhChinh.url }}"
+                                                alt="#"></a>
+                                    </div>
+                                    <div class="popular-post-widget-brief">
+                                        <div class="ltn__blog-meta">
+                                            <ul>
+                                                <li class="ltn__blog-author d-none">
+                                                    <a href="#">by: Admin</a>
+                                                </li>
+                                                <li>
+                                                    <span> {{ item.created_at }}</span>
+                                                </li>
+                                                <li class="ltn__blog-comment">
+                                                    <a href="#"><i class="icon-speech"></i> {{ item.The }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="ltn__blog-title blog-title-line"><a
+                                                href="{% url 'detail_news' slug=item.DuongDan %}">{{ item.TieuDe }}</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+                    <!-- Category Widget -->
+                    <div class="widget ltn__menu-widget">
+                        <h4 class="ltn__widget-title">Chuyên Mục - Sản Phẩm</h4>
+                        <ul>
+                            {% for item in chuyenmuc %}
+                            <li><a href="{% url 'detail_category' slug=item.DuongDan %}">{{ item.TenChuyenMuc }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% for item in banner %}
+                    <!-- Banner Widget -->
+                    <div class="widget ltn__banner-widget">
+                        <a href="{% url 'detail_category' slug=item.ChuyenMuc.DuongDan %}"><img style="height: 265px;"
+                                src="{{ item.HinhAnh.url }}" alt="Banner Image"></a>
+                    </div>
+                    {% endfor %}
+
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
