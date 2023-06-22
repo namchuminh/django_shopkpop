@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'ckeditor',
     'website',
     'product',
-    'news'
+    'news',
+    'customer',
+    'contact',
+    'category'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'website.middleware.AuthMiddleware'
 ]
 
 ROOT_URLCONF = 'django_shopkpop.urls'
@@ -69,7 +73,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'website.context_processors.category_context_processor',
                 'website.context_processors.nhataitro_context_processor',
-                'website.context_processors.thongtin_context_processor'
+                'website.context_processors.thongtin_context_processor',
             ],
         },
     },
@@ -154,3 +158,4 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+

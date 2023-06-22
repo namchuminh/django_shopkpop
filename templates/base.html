@@ -81,12 +81,18 @@
                                         <ul>
                                             <li>
                                                 <a href="#"><i class="icon-user"></i></a>
-                                                <ul>
-                                                    <li><a href="login.html">Sign in</a></li>
-                                                    <li><a href="register.html">Register</a></li>
-                                                    <li><a href="account.html">My Account</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                                </ul>
+
+                                                {% if user.is_authenticated %}
+                                                    <ul>
+                                                        <li><a href="{% url 'customer' %}">CÁ NHÂN</a></li>
+                                                        <li><a href="{% url 'customer_logout' %}">ĐĂNG XUẤT</a></li>
+                                                    </ul>
+                                                {% else %}
+                                                    <ul>
+                                                        <li><a href="{% url 'customer_login' %}">ĐĂNG NHẬP</a></li>
+                                                        <li><a href="{% url 'customer_register' %}">ĐĂNG KÝ</a></li>
+                                                    </ul>
+                                                {% endif %}
                                             </li>
                                         </ul>
                                     </div>
@@ -151,7 +157,7 @@
                                             </ul>
                                         </li>
                                         <li class="menu-icon"><a href="{% url 'list_news' %}">Tin Tức</a></li>
-                                        <li><a href="contact.html">Liên Hệ</a></li>
+                                        <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
                                         <li><a href="contact.html">Tra Cứu Đơn Hàng</a></li>
                                     </ul>
                                 </div>
@@ -261,7 +267,7 @@
                         </ul>
                     </li>
                     <li><a href="{% url 'list_news' %}">Tin Tức</a></li>
-                    <li><a href="contact.html">Liên Hệ</a></li>
+                    <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
                     <li><a href="contact.html">Tra Cứu Đơn Hàng</a></li>
                 </ul>
             </div>

@@ -12,3 +12,4 @@ def nhataitro_context_processor(request):
 def thongtin_context_processor(request):
     thongtin_load = ThongTin.objects.all()
     return {'thongtin_load': thongtin_load}
+
