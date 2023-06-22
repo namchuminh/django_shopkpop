@@ -8,8 +8,6 @@ class AuthMiddleware:
         user = request.user
         path = request.path
         
-        print(path)
-        
         if not user.is_authenticated and path == '/khach-hang/':
             return redirect('customer_login')
 
