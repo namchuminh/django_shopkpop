@@ -99,9 +99,11 @@
                                         <li>
                                             <div class="ltn__color-widget clearfix">
                                                 <strong class="d-meta-title">Màu Sắc</strong>
+                                                <input type="hidden" value="" class="mausac">
+                                                {% csrf_token %}
                                                 <ul>
                                                     {% for item in sanpham.MauSac.all %}
-                                                        <li class="theme" style="cursor: pointer; background-color: {{ item.MaMauSac }}"></li>
+                                                        <li class="mau{{ item.id }} theme" style="cursor: pointer; background-color: {{ item.MaMauSac }}"></li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
@@ -114,16 +116,14 @@
                                             <div class="cart-plus-minus">
                                                 <div class="dec qtybutton">-</div>
                                                 <input type="number" min="1" value="1" name="qtybutton"
-                                                    class="cart-plus-minus-box">
+                                                    class="cart-plus-minus-box soluong">
                                                 <div class="inc qtybutton">+</div>
                                             </div>
                                         </li>
                                         <li>
-                                            <a href="#" class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
-                                                title="Add to Cart" data-bs-toggle="modal"
-                                                data-bs-target="#add_to_cart_modal">
+                                            <button href="#" class="theme-btn-1 btn btn-effect-1 d-add-to-cart">
                                                 <span>THÊM GIỎ HÀNG</span>
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <a href="#" class="btn btn-effect-1 d-add-to-wishlist" title="Add to Cart"
@@ -284,6 +284,50 @@
 <script>
     $(document).ready(function(){
         $('.ltn__brand-logo-area').addClass('d-none')
+
+        $('.theme').click(function(e){
+            $('.theme').removeClass('theme-active')
+            $(this).addClass('theme-active')
+            const mauId = $(this).first().attr("class")
+            $('.mausac').val(mauId.split(" ")[0][3])
+        })
+
+        $('.d-add-to-cart').click(function(e){
+            const soluong = $(".soluong").val()
+            const mausac = $(".mausac").val()
+            const masanpham = "{{ sanpham.id }}"
+
+            if(mausac == ""){
+                alert("Vui Lòng Chọn Màu Sắc!")
+                return
+            }
+
+            if(masanpham == ""){
+                alert("Vui Lòng Không Sửa Mã Sản Phẩm!")
+                return
+            }
+
+            if(soluong <= 0){
+                alert("Số Lượng Sản Phẩm Phải Lớn Hơn 0!")
+                return
+            }
+
+            $.post("{% url 'add_product_cart' %}", 
+                {soluong, mausac, masanpham, csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()}, 
+                function(result){
+                    var keys = Object.keys(result)
+                    if (keys[0] == "error"){
+                        alert(result.error)
+                        return
+                    }
+
+                    if (keys[0] == "success"){
+                        alert(result.success)
+                        location.reload(true);
+                    }
+                }
+            );
+        })
     });
 </script>
 {% endblock content%}

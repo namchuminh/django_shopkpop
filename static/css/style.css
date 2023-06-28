@@ -12938,3 +12938,7 @@ input.cart-plus-minus-box {
 /* ----------------------------------------------------
     END
 ---------------------------------------------------- */
+.theme-active{
+  outline: 2px solid var(--ltn__secondary-color); 
+  outline-offset: 1px;
+}

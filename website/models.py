@@ -62,8 +62,8 @@ class ThongTin(models.Model):
     HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True)
     
     class Meta:
-        verbose_name = "Thông Tin"
-        verbose_name_plural = "Thông Tin"
+        verbose_name = "Cấu Hình"
+        verbose_name_plural = "Cấu Hình"
         
     def __str__(self):
         return self.LoaiThongTin.TenLoai
