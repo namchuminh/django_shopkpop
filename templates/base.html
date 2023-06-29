@@ -179,58 +179,45 @@
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="mini-cart-product-area ltn__scrollbar">
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Premium Joyful</a></h6>
-                        <span class="mini-cart-quantity">1 x $65.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/2.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">The White Rose</a></h6>
-                        <span class="mini-cart-quantity">1 x $85.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/3.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Red Rose Bouquet</a></h6>
-                        <span class="mini-cart-quantity">1 x $92.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Pink Flower Tree</a></h6>
-                        <span class="mini-cart-quantity">1 x $68.00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mini-cart-footer">
-                <div class="mini-cart-sub-total">
-                    <h5>Subtotal: <span>$310.00</span></h5>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-                </div>
-                <p>Free Shipping on All Orders Over $100!</p>
-            </div>
 
+                {% if giohang_load %}
+                    {% for item in giohang_load %}
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"><img src="{{ item.SanPham.AnhChinh.url }}" alt="Image"></a>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}">{{ item.SanPham.TenSanPham }}</a></h6>
+                                <span class="mini-cart-quantity">{{ item.SoLuong }} x {{ item.GiaBan }}đ</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="mini-cart-item clearfix">
+                        <div class="mini-cart-info text-center">
+                            <h6><a href="{% url 'customer_login' %}">Đăng Nhập Để Xem Giỏ Hàng!</a></h6>                        </div>
+                    </div>
+                {% endif%}
+            </div>
+            {% if giohang_load %}
+                <div class="mini-cart-footer">
+                    <div class="mini-cart-sub-total">
+                        <h5>Tổng Tiền: <span>{{ total_price }}đ</span></h5>
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
+                        <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
+                    </div>
+                    <p>Miễn phí ship cho đơn hàng trên 500.000đ</p>
+                </div>
+            {% else %}
+                <div class="mini-cart-footer">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'customer_login' %}" class="theme-btn-1 btn btn-effect-1">Đăng Nhập</a>
+                        <a href="{% url 'customer_register' %}" class="theme-btn-2 btn btn-effect-2">Đăng Ký</a>
+                    </div>
+                </div>
+            {% endif%}
         </div>
     </div>
     <!-- Utilize Cart Menu End -->

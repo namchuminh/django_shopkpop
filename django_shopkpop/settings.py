@@ -75,6 +75,7 @@ TEMPLATES = [
                 'website.context_processors.category_context_processor',
                 'website.context_processors.nhataitro_context_processor',
                 'website.context_processors.thongtin_context_processor',
+                'website.context_processors.giohang_context_processor'
             ],
         },
     },

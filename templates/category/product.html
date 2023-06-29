@@ -82,7 +82,7 @@
                                                 <ul>
                                                     <li class="add-to-cart">
                                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                                            <span class="cart-text d-none d-xl-block">THÊM GIỎ HÀNG</span>
+                                                            <span class="{{ item.id }} cart-text d-none d-xl-block">THÊM GIỎ HÀNG</span>
                                                             <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
                                                         </a>
                                                     </li>
@@ -140,7 +140,7 @@
                                                 <ul>
                                                     <li class="add-to-cart">
                                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                                            <span class="cart-text d-none d-xl-block">THÊM GIỎ HÀNG</span>
+                                                            <span class="{{ item.id }} cart-text d-none d-xl-block">THÊM GIỎ HÀNG</span>
                                                             <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
                                                         </a>
                                                     </li>
@@ -212,6 +212,26 @@
             $(".sx_giam").attr("href", currentUrl.split('?sap_xep')[0] + "?sap_xep=giam");
             $(".sx_moi").attr("href", currentUrl.split('?sap_xep')[0] + "?sap_xep=moi");
         }
+
+        $('.cart-text').click(function(e){
+            var masanpham = $(this).first().attr("class").split(" ")[0]
+            $.get("{% url 'add_product_cart' %}", 
+                {masanpham}, 
+                function(result){
+                    var keys = Object.keys(result)
+                    if (keys[0] == "error"){
+                        alert(result.error)
+                        return
+                    }
+    
+                    if (keys[0] == "success"){
+                        alert(result.success)
+                        window.scrollTo(0, 0);
+                        location.reload();
+                    }
+                }
+            );
+        })
     });
 </script>
 {% endblock content%}

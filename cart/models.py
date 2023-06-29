@@ -1,5 +1,3 @@
-from email.policy import default
-from xml.parsers.expat import model
 from django.db import models
 from customer.models import KhachHang
 from product.models import MauSac, SanPham
