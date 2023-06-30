@@ -1,10 +1,10 @@
-import imp
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import JsonResponse
 from django.views import View
 from django.contrib.auth.models import User
 from customer.models import KhachHang
 from .models import *
+from website.models import *
 # Create your views here.
 
 template_error = '404error.html'
@@ -16,11 +16,27 @@ class CartList(View):
 
     def get(self, request):
         try:
-            if(request.user.is_authenticated):
-                data = {"title": "Giỏ hàng"}
-                return render(request, self.template_name, data)
-            else:
-                return redirect('customer_login')
+            user = User.objects.all().get(id=request.user.id)
+            khachhang = KhachHang.objects.all().get(User=user)
+            giohang = GioHang.objects.all().filter(KhachHang=khachhang)
+            
+            total_price = 0
+        
+            for item in giohang:
+                total_price += item.SoLuong * item.GiaBan
+            
+            loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phiship")
+            phiship = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
+            
+            loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
+            phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
+            
+            thanhtoan = int(total_price + int(phiship)) 
+            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+            print(thanhtoan)
+            
+            data = {"title": "Giỏ hàng", "giohang": giohang, "thanhtoan": thanhtoan, "phiship": phiship, "phivat": phivat, "total_price": total_price}
+            return render(request, self.template_name, data)
         except:
             return render(request, template_error)
 
@@ -46,11 +62,11 @@ def AddProductToCart(request):
                 return JsonResponse({"error": "Vui Lòng Chọn Màu Sắc!"})
             
             
-            count_khachhang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
+            count_giohang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
             
-            if count_khachhang == 1:
+            if count_giohang == 1:
                 return JsonResponse({"error": "Sản Phẩm Đã Có Trong Giỏ Hàng!"})
-            elif count_khachhang == 0:
+            elif count_giohang == 0:
                 cart = GioHang(KhachHang=khachhang, SanPham=sanpham, SoLuong=soluong, MauSac=mausac)
                 cart.save()
                 return JsonResponse({"success": "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!"})
@@ -64,11 +80,11 @@ def AddProductToCart(request):
             user = User.objects.all().get(id=request.user.id)
             khachhang = KhachHang.objects.all().get(User=user)
             
-            count_khachhang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
+            count_giohang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
             
-            if count_khachhang == 1:
+            if count_giohang == 1:
                 return JsonResponse({"error": "Sản Phẩm Đã Có Trong Giỏ Hàng!"})
-            elif count_khachhang == 0:
+            elif count_giohang == 0:
                 cart = GioHang(KhachHang=khachhang, SanPham=sanpham)
                 cart.save()
                 return JsonResponse({"success": "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!"})

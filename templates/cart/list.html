@@ -33,68 +33,69 @@
                         <div class="shoping-cart-table table-responsive">
                             <table class="table">
                                 <thead>
-                                    <th class="cart-product-image">Hình Ảnh</th>
-                                    <th class="cart-product-info">Tên Sản Phẩm</th>
-                                    <th class="cart-product-price">Giá Bán</th>
-                                    <th class="cart-product-quantity">Số Lượng</th>
-                                    <th class="cart-product-subtotal">Tổng Tiền</th>
-                                    <th class="cart-product-remove">Xóa</th>
+                                    <th class="cart-product-image" style="width: 18%; text-align: center;">Hình Ảnh</th>
+                                    <th class="cart-product-info" style="width: 18%; text-align: center;">Tên Sản Phẩm</th>
+                                    <th class="cart-product-price" style="width: 18%; text-align: center;">Giá Bán</th>
+                                    <th class="cart-product-quantity" style="width: 18%; text-align: center;">Số Lượng</th>
+                                    <th class="cart-product-subtotal" style="width: 18%; text-align: center;">Tổng Tiền</th>
+                                    <th class="cart-product-remove" style="width: 10%; text-align: center;">Xóa</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="cart-product-image">
-                                            <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                                        </td>
-                                        <td class="cart-product-info">
-                                            <h6><a href="product-details.html">Brake Conversion Kit</a></h6>
-                                        </td>
-                                        <td class="cart-product-price">$149.00</td>
-                                        <td class="cart-product-quantity">
-                                            <div class="cart-plus-minus">
-                                                <input type="text" value="1" name="qtybutton" class="cart-plus-minus-box">
-                                            </div>
-                                        </td>
-                                        <td class="cart-product-subtotal">$298.00</td>
-                                        <td class="cart-product-remove">x</td>
-                                    </tr>
+                                    {% for item in giohang %}
+                                        <tr>
+                                            <td class="cart-product-image">
+                                                <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}" style="width: 18%; text-align: center;"><img src="{{ item.SanPham.AnhChinh.url }}" alt="#"></a>
+                                            </td>
+                                            <td class="cart-product-info">
+                                                <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}" style="width: 18%; text-align: center;">{{ item.SanPham.TenSanPham }}</a></h6>
+                                            </td>
+                                            <td class="cart-product-price" style="width: 18%; text-align: center;">{{ item.GiaBan }}</td>
+                                            <td class="cart-product-quantity" style="width: 18%; text-align: center;">
+                                                <div class="cart-plus-minus">
+                                                    <input type="text" value="{{ item.SoLuong }}" name="qtybutton" class="cart-plus-minus-box">
+                                                </div>
+                                            </td>
+                                            <td class="cart-product-subtotal" style="width: 18%; text-align: center;">{{ item.GiaBan }}</td>
+                                            <td class="cart-product-remove" style="width: 10%; text-align: center;">x</td>
+                                        </tr>
+                                    {% endfor %}
                                     <tr class="cart-coupon-row">
-                                        <td colspan="6">
-                                            <div class="cart-coupon">
-                                                <input type="text" name="cart-coupon" placeholder="Coupon code">
-                                                <button type="submit" class="btn theme-btn-2 btn-effect-2">Apply Coupon</button>
-                                            </div>
-                                        </td>
                                         <td>
-                                            <button type="submit" class="btn theme-btn-2 btn-effect-2-- disabled">Update Cart</button>
+                                            <button type="submit" class="btn theme-btn-2 btn-effect-2">Cập Nhật</button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="shoping-cart-total mt-50">
-                            <h4>Cart Totals</h4>
+                            <h4>Tổng Tiền</h4>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>Cart Subtotal</td>
-                                        <td>$618.00</td>
+                                        <td>Tổng Đơn</td>
+                                        <td>{{ total_price }}đ</td>
                                     </tr>
                                     <tr>
-                                        <td>Shipping and Handing</td>
-                                        <td>$15.00</td>
+                                        <td>Phí Ship</td>
+                                        <td>
+                                            {{ phiship }}đ
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Vat</td>
-                                        <td>$00.00</td>
+                                        <td>
+                                            {{ phivat }}%
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Order Total</strong></td>
-                                        <td><strong>$633.00</strong></td>
+                                        <td><strong>Số Tiền Thanh Toán</strong></td>
+                                        <td><strong>{{ thanhtoan }}đ</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <br>
                             <div class="btn-wrapper text-right">
-                                <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                                <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Thanh Toán</a>
                             </div>
                         </div>
                     </div>

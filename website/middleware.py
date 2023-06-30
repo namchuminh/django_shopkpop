@@ -10,6 +10,9 @@ class AuthMiddleware:
         
         if not user.is_authenticated and path == '/khach-hang/':
             return redirect('customer_login')
+        
+        if not user.is_authenticated and path == '/gio-hang/':
+            return redirect('customer_login')
 
         if user.is_authenticated and path == '/khach-hang/dang-nhap/':
             return redirect('customer')
