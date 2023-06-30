@@ -26,47 +26,67 @@
 </div>
 
 <div class="liton__shoping-cart-area mb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping-cart-inner">
-                        <div class="shoping-cart-table table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <th class="cart-product-image" style="width: 18%; text-align: center;">Hình Ảnh</th>
-                                    <th class="cart-product-info" style="width: 18%; text-align: center;">Tên Sản Phẩm</th>
-                                    <th class="cart-product-price" style="width: 18%; text-align: center;">Giá Bán</th>
-                                    <th class="cart-product-quantity" style="width: 18%; text-align: center;">Số Lượng</th>
-                                    <th class="cart-product-subtotal" style="width: 18%; text-align: center;">Tổng Tiền</th>
-                                    <th class="cart-product-remove" style="width: 10%; text-align: center;">Xóa</th>
-                                </thead>
-                                <tbody>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping-cart-inner">
+                    <div class="shoping-cart-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <th class="cart-product-image" style="width: 18%; text-align: center;">Hình Ảnh</th>
+                                <th class="cart-product-info" style="width: 18%; text-align: center;">Tên Sản Phẩm</th>
+                                <th class="cart-product-price" style="width: 18%; text-align: center;">Màu Sắc</th>
+                                <th class="cart-product-quantity" style="width: 18%; text-align: center;">Số Lượng</th>
+                                <th class="cart-product-subtotal" style="width: 18%; text-align: center;">Tổng Tiền</th>
+                                <th class="cart-product-remove" style="width: 10%; text-align: center;">Xóa</th>
+                            </thead>
+                            <tbody>
+                                {% if giohang.count >= 1%}
                                     {% for item in giohang %}
                                         <tr>
                                             <td class="cart-product-image">
-                                                <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}" style="width: 18%; text-align: center;"><img src="{{ item.SanPham.AnhChinh.url }}" alt="#"></a>
+                                                <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"
+                                                    style="width: 18%; text-align: center;"><img
+                                                        src="{{ item.SanPham.AnhChinh.url }}" alt="#"></a>
                                             </td>
                                             <td class="cart-product-info">
-                                                <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}" style="width: 18%; text-align: center;">{{ item.SanPham.TenSanPham }}</a></h6>
+                                                <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"
+                                                        style="width: 18%; text-align: center;">{{ item.SanPham.TenSanPham}}</a></h6>
                                             </td>
-                                            <td class="cart-product-price" style="width: 18%; text-align: center;">{{ item.GiaBan }}</td>
-                                            <td class="cart-product-quantity" style="width: 18%; text-align: center;">
-                                                <div class="cart-plus-minus">
-                                                    <input type="text" value="{{ item.SoLuong }}" name="qtybutton" class="cart-plus-minus-box">
+                                            <td class="cart-product-price" style="width: 18%; text-align: center;">
+                                                    <div class="ltn__color-widget clearfix">
+                                                        <ul>
+                                                            {% if item.MauSac %}
+                                                                {% for color in item.SanPham.MauSac.all %}
+                                                                    {% if item.MauSac.id == color.id %}
+                                                                        <li class="{{ color.id }} {{ item.id }} theme theme-active" style="cursor: pointer; background-color: {{ color.MaMauSac }}"></li>
+                                                                    {% else %}
+                                                                        <li class="{{ color.id }} {{ item.id }} theme" style="cursor: pointer; background-color: {{ color.MaMauSac }}"></li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                {% for color in item.SanPham.MauSac.all %}
+                                                                    <li class="{{ color.id }} {{ item.id }} theme" style="cursor: pointer; background-color: {{ color.MaMauSac }}"></li>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </ul>
                                                 </div>
                                             </td>
-                                            <td class="cart-product-subtotal" style="width: 18%; text-align: center;">{{ item.GiaBan }}</td>
-                                            <td class="cart-product-remove" style="width: 10%; text-align: center;">x</td>
+                                            <td class="cart-product-quantity" style="width: 18%; text-align: center;">
+                                                <div style="height: 50px; line-height: 43px; text-align: center;">
+                                                    <input type="number" min="1" value="{{ item.SoLuong }}" id="myInput" name="qtybutton"
+                                                    class="{{ item.id}} cart-plus-minus-box" style="border: solid 1.5px #9d9d9d; width: 50%; border-radius: 5px; text-align: center;">
+                                                </div>
+                                            </td>
+                                            <td class="cart-product-subtotal" style="width: 18%; text-align: center;"><p class="soluong" style="font-weight: 400;">{{item.GiaBan }} x {{ item.SoLuong }}</p> </td>
+                                            <td class="cart-product-remove" style="width: 10%; text-align: center;"><a href="{% url 'delete_product_cart' id=item.id %}">x</a></td>
                                         </tr>
                                     {% endfor %}
-                                    <tr class="cart-coupon-row">
-                                        <td>
-                                            <button type="submit" class="btn theme-btn-2 btn-effect-2">Cập Nhật</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if giohang.count >= 1%}
                         <div class="shoping-cart-total mt-50">
                             <h4>Tổng Tiền</h4>
                             <table class="table">
@@ -98,10 +118,64 @@
                                 <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">Thanh Toán</a>
                             </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <br>
+                        <br>
+                        <p style="text-align: center;">Giỏ Hàng Hiện Đang Trống!</p>
+                        <br>
+                        <div class="text-center">
+                            <a class="btn btn-success" href="{% url 'product' %}">MUA SẮM SẢN PHẨM</a> 
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+</div>
+{% csrf_token %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        
+        $('.cart-plus-minus-box').on('change', function() {
+            var soluong = $(this).val();
+            var magiohang = $(this).first().attr("class").split(" ")[0]
+
+            $.post("{% url 'update_number_cart' %}", 
+                {magiohang, soluong, csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()},
+                function(result){
+                    var keys = Object.keys(result)
+                    if (keys[0] == "error"){
+                        alert(result.error)
+                        return
+                    }
+
+                    if (keys[0] == "success"){
+                        location.reload(true);
+                    }
+                }
+            )
+        });
+
+        $('.theme').click(function(e){
+            const mamau = $(this).first().attr("class").split(" ")[0]
+            const magiohang = $(this).first().attr("class").split(" ")[1]
+            $.post("{% url 'update_color_cart' %}", 
+                {magiohang, mamau, csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()},
+                function(result){
+                    var keys = Object.keys(result)
+                    if (keys[0] == "error"){
+                        alert(result.error)
+                        return
+                    }
+
+                    if (keys[0] == "success"){
+                        location.reload(true);
+                    }
+                }
+            )
+        })
+    });
+</script>
 
 {% endblock content%}

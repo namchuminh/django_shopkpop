@@ -23,10 +23,12 @@ def giohang_context_processor(request):
         giohang_load = GioHang.objects.all().filter(KhachHang=khachhang)
         
         total_price = 0
-    
+        count_product = 0
+        
         for item in giohang_load:
             total_price += item.SoLuong * item.GiaBan
-            
-        return {'giohang_load': giohang_load, "total_price": total_price}
+            count_product = count_product + 1
+        
+        return {'giohang_load': giohang_load, "total_price": total_price, "count_product": count_product}
     else:
         return {'giohang_load': None}

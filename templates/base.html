@@ -104,9 +104,19 @@
                                         <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                             <span class="mini-cart-icon">
                                                 <i class="icon-handbag"></i>
-                                                <sup>2</sup>
+                                                {% if giohang_load.count >= 1 %}
+                                                    <sup>{{ giohang_load.count }}</sup>
+                                                {% else %}
+                                                    <sup>0</sup>
+                                                {% endif %}
                                             </span>
-                                            <h6><span>Giỏ Hàng</span> <span class="ltn__secondary-color">$89.25</span></h6>
+                                            <h6>
+                                                {% if total_price > 0 %}
+                                                    <span>Giỏ Hàng</span> <span class="ltn__secondary-color" style="text-transform: lowercase;">{{ total_price }} đ</span>
+                                                {% else %}
+                                                    <span>Giỏ Hàng</span> <span class="ltn__secondary-color" style="text-transform: lowercase;">0 đ</span>
+                                                {% endif %}
+                                            </h6>
                                         </a>
                                     </div>
                                 </li>
@@ -181,36 +191,55 @@
             </div>
             <div class="mini-cart-product-area ltn__scrollbar">
 
-                {% if giohang_load %}
-                    {% for item in giohang_load %}
-                        <div class="mini-cart-item clearfix">
-                            <div class="mini-cart-img">
-                                <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"><img src="{{ item.SanPham.AnhChinh.url }}" alt="Image"></a>
+                {% if user.is_authenticated %}
+                    {% if count_product >= 1 %}
+                        {% for item in giohang_load %}
+                            <div class="mini-cart-item clearfix">
+                                <div class="mini-cart-img">
+                                    <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"><img src="{{ item.SanPham.AnhChinh.url }}" alt="Image"></a>
+                                </div>
+                                <div class="mini-cart-info">
+                                    <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}">{{ item.SanPham.TenSanPham }}</a></h6>
+                                    <span class="mini-cart-quantity">{{ item.SoLuong }} x {{ item.GiaBan }}đ</span>
+                                </div>
                             </div>
-                            <div class="mini-cart-info">
-                                <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}">{{ item.SanPham.TenSanPham }}</a></h6>
-                                <span class="mini-cart-quantity">{{ item.SoLuong }} x {{ item.GiaBan }}đ</span>
+                        {% endfor %}
+                    {% else %}
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-info text-center">
+                                <h6><a href="{% url 'cart_list' %}" style="font-size: 17px; font-weight: 400;">Giỏ Hàng Đang Trống!</a></h6>
+                                <br>
+                                <a class="btn btn-success" href="{% url 'product' %}">MUA SẮM SẢN PHẨM</a>                        
                             </div>
                         </div>
-                    {% endfor %}
+                    {% endif %}
                 {% else %}
                     <div class="mini-cart-item clearfix">
                         <div class="mini-cart-info text-center">
-                            <h6><a href="{% url 'customer_login' %}">Đăng Nhập Để Xem Giỏ Hàng!</a></h6>                        </div>
+                            <h6><a href="{% url 'customer_login' %}">Đăng Nhập Để Xem Giỏ Hàng!</a></h6>                        
+                        </div>
                     </div>
                 {% endif%}
             </div>
-            {% if giohang_load %}
-                <div class="mini-cart-footer">
-                    <div class="mini-cart-sub-total">
-                        <h5>Tổng Tiền: <span>{{ total_price }}đ</span></h5>
+            {% if user.is_authenticated %}
+                {% if count_product >= 1 %}
+                    <div class="mini-cart-footer">
+                        <div class="mini-cart-sub-total">
+                            <h5>Tổng Tiền: <span>{{ total_price }}đ</span></h5>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="{% url 'cart_list' %}" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
+                            <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
+                        </div>
+                        <p>Phí ship cho tất cả đơn hàng: 
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'phiship' %}
+                                    {{ item.GiaTri }}đ
+                                {% endif %}
+                            {% endfor %}
+                        </p>
                     </div>
-                    <div class="btn-wrapper">
-                        <a href="{% url 'cart_list' %}" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
-                        <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
-                    </div>
-                    <p>Miễn phí ship cho đơn hàng trên 500.000đ</p>
-                </div>
+                {% endif %}
             {% else %}
                 <div class="mini-cart-footer">
                     <div class="btn-wrapper">

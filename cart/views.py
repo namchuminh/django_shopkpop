@@ -15,30 +15,28 @@ class CartList(View):
     template_name = 'cart/list.html'
 
     def get(self, request):
-        try:
-            user = User.objects.all().get(id=request.user.id)
-            khachhang = KhachHang.objects.all().get(User=user)
-            giohang = GioHang.objects.all().filter(KhachHang=khachhang)
-            
-            total_price = 0
+        user = User.objects.all().get(id=request.user.id)
+        khachhang = KhachHang.objects.all().get(User=user)
+        giohang = GioHang.objects.all().filter(KhachHang=khachhang)
+        mausac = MauSac.objects.all()
+        total_price = 0
+    
+        for item in giohang:
+            total_price += item.SoLuong * item.GiaBan
+            print(item.MauSac)
         
-            for item in giohang:
-                total_price += item.SoLuong * item.GiaBan
-            
-            loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phiship")
-            phiship = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
-            
-            loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
-            phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
-            
-            thanhtoan = int(total_price + int(phiship)) 
-            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
-            print(thanhtoan)
-            
-            data = {"title": "Giỏ hàng", "giohang": giohang, "thanhtoan": thanhtoan, "phiship": phiship, "phivat": phivat, "total_price": total_price}
-            return render(request, self.template_name, data)
-        except:
-            return render(request, template_error)
+        loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phiship")
+        phiship = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
+        
+        loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
+        phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
+        
+        thanhtoan = int(total_price + int(phiship)) 
+        thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+        print(thanhtoan)
+        
+        data = {"title": "Giỏ hàng", "giohang": giohang, "mausac": mausac, "thanhtoan": thanhtoan, "phiship": phiship, "phivat": phivat, "total_price": total_price}
+        return render(request, self.template_name, data)
 
 def AddProductToCart(request):
     
@@ -79,7 +77,6 @@ def AddProductToCart(request):
             sanpham = SanPham.objects.all().get(id=masanpham)
             user = User.objects.all().get(id=request.user.id)
             khachhang = KhachHang.objects.all().get(User=user)
-            
             count_giohang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
             
             if count_giohang == 1:
@@ -90,4 +87,57 @@ def AddProductToCart(request):
                 return JsonResponse({"success": "Thêm Sản Phẩm Vào Giỏ Hàng Thành Công!"})
         except:
             return JsonResponse({"error": "Có Lỗi Khi Thêm Sản Phẩm Vào Giỏ Hàng!"})
+
+def UpdateNumberToCart(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "Vui Lòng Đăng Nhập!"})
+    
+    if request.method == "POST":
+        try:
+            magiohang = request.POST['magiohang']
+            soluong = request.POST['soluong']
+            
+            if int(soluong) <= 0:
+                return JsonResponse({"error": "Số Lượng Phải Lớn Hơn 0!"})
+
+            if soluong == "":
+                return JsonResponse({"error": "Không Được Bỏ Trống Số Lượng!"})
+            
+            giohang = GioHang.objects.all().get(id=magiohang)
+            giohang.SoLuong = soluong
+            giohang.save()
+            return JsonResponse({"success": "Cập Nhật Số Lượng Phẩm Thành Công!"})
+        except:
+            return JsonResponse({"error": "Có Lỗi Khi Cập Nhật Sản Phẩm!"})
+
+def UpdateColorToCart(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "Vui Lòng Đăng Nhập!"})
+    try:
+        magiohang = request.POST['magiohang']
+        mamau = request.POST['mamau']
         
+        if int(mamau) <= 0:
+            return JsonResponse({"error": "Vui Lòng Chọn Lại Màu Hợp Lệ!"})
+
+        if mamau == "":
+            return JsonResponse({"error": "Vui Lòng Chọn Lại Màu!"})
+        
+        mausac = MauSac.objects.all().get(id=mamau)
+        giohang = GioHang.objects.all().get(id=magiohang)
+        giohang.MauSac = mausac
+        giohang.save()
+        return JsonResponse({"success": "Cập Nhật Màu Phẩm Thành Công!"})
+    except:
+        return JsonResponse({"error": "Có Lỗi Khi Cập Nhật Sản Phẩm!"})
+
+def DeleteProductToCart(request, id):
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "Vui Lòng Đăng Nhập!"})
+    
+    try:
+        giohang = GioHang.objects.all().get(id=id)
+        giohang.delete()
+        return redirect('cart_list')
+    except:
+        return JsonResponse({"error": "Có Lỗi Khi Xóa Sản Phẩm!"})
