@@ -12,5 +12,6 @@ urlpatterns = [
     path('lien-he/', include('contact.urls')),
     path('khach-hang/', include('customer.urls')),
     path('gio-hang/', include('cart.urls')),
+    path('thanh-toan/', include('order.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

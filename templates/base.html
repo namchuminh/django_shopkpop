@@ -229,7 +229,7 @@
                         </div>
                         <div class="btn-wrapper">
                             <a href="{% url 'cart_list' %}" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
-                            <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
+                            <a href="{% url 'pay_cart' %}" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
                         </div>
                         <p>Phí ship cho tất cả đơn hàng: 
                             {% for item in thongtin_load %}

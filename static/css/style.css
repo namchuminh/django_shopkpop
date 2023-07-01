@@ -7889,14 +7889,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   font-weight: 500;
   position: relative;
   padding-bottom: 10px; }
-  .title-2::before {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    width: 290px;
-    height: 1px;
-    background-color: var(--white-6); }
+
 
 .text-center .title-2::before {
   text-align: center;

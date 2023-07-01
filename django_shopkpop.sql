@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 12:13 AM
+-- Generation Time: Jul 01, 2023 at 07:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -145,7 +145,15 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (81, 'Can add Giỏ Hàng', 21, 'add_giohang'),
 (82, 'Can change Giỏ Hàng', 21, 'change_giohang'),
 (83, 'Can delete Giỏ Hàng', 21, 'delete_giohang'),
-(84, 'Can view Giỏ Hàng', 21, 'view_giohang');
+(84, 'Can view Giỏ Hàng', 21, 'view_giohang'),
+(85, 'Can add Chi Tiết Đơn Hàng', 22, 'add_chitietdonhang'),
+(86, 'Can change Chi Tiết Đơn Hàng', 22, 'change_chitietdonhang'),
+(87, 'Can delete Chi Tiết Đơn Hàng', 22, 'delete_chitietdonhang'),
+(88, 'Can view Chi Tiết Đơn Hàng', 22, 'view_chitietdonhang'),
+(89, 'Can add Đơn Hàng', 23, 'add_donhang'),
+(90, 'Can change Đơn Hàng', 23, 'change_donhang'),
+(91, 'Can delete Đơn Hàng', 23, 'delete_donhang'),
+(92, 'Can view Đơn Hàng', 23, 'view_donhang');
 
 -- --------------------------------------------------------
 
@@ -172,7 +180,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$320000$RQko2mlNvgIJE1sc8lAlm2$kKdOKU8skgBG3xSDa1xdckUTuKnys0hx3ONqQP3ZTjs=', '2023-06-29 22:10:39.513746', 1, 'admin', '', '', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.373778'),
+(1, 'pbkdf2_sha256$320000$RQko2mlNvgIJE1sc8lAlm2$kKdOKU8skgBG3xSDa1xdckUTuKnys0hx3ONqQP3ZTjs=', '2023-07-01 15:29:32.000000', 1, 'admin', 'Nam Chu', 'Minh', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.000000'),
 (2, 'pbkdf2_sha256$320000$4MS3iZ4Tp9gpTkuB4Y7ZvE$gGoIQCUBaF2YJPeCZ9FPfojGjueHkKBav535GrT0HR8=', '2023-06-22 12:16:07.109468', 0, 'nam', 'Chu Minh', 'Nam', 'namchuminh@gmail.com', 0, 1, '2023-06-22 10:17:55.648828'),
 (3, 'pbkdf2_sha256$320000$3jmllDEOOrucsOVyKZw1u9$TRUsXbP6qDUoSDQoQUQ089m/DunFo4esM+6Q5d6/LJQ=', '2023-06-22 14:06:08.440898', 0, 'nam2', 'a', 'a', 'a@gmail.com', 0, 1, '2023-06-22 10:21:52.025011');
 
@@ -216,15 +224,6 @@ CREATE TABLE `cart_giohang` (
   `SoLuong` int(11) NOT NULL,
   `TenSanPham` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `cart_giohang`
---
-
-INSERT INTO `cart_giohang` (`id`, `KhachHang_id`, `GiaBan`, `MauSac_id`, `MoTaNgan`, `SanPham_id`, `SoLuong`, `TenSanPham`) VALUES
-(32, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 14, 1, 'ALBUM ENHYPEN - DARK BLOOD IUDFGOI'),
-(33, 3, 250000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 10, 1, 'ALBUM ENHYPEN - DARK BLOOD ầds'),
-(34, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 13, 1, 'ALBUM ENHYPEN - DARK BLOOD KHJKJG');
 
 -- --------------------------------------------------------
 
@@ -450,7 +449,19 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (162, '2023-06-29 00:21:00.569284', '21', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD ydsgdfs', 3, '', 21, 1),
 (163, '2023-06-29 00:23:36.195347', '31', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD rqewrqw', 3, '', 21, 1),
 (164, '2023-06-29 00:23:36.197382', '30', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD tretre', 3, '', 21, 1),
-(165, '2023-06-29 00:23:36.200013', '29', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD ydsgdfs', 3, '', 21, 1);
+(165, '2023-06-29 00:23:36.200013', '29', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD ydsgdfs', 3, '', 21, 1),
+(166, '2023-06-30 00:14:29.368525', '32', 'MKH: 1 - Tên Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD IUDFGOI', 2, '[{\"changed\": {\"fields\": [\"SoLuong\"]}}]', 21, 1),
+(167, '2023-06-30 00:26:38.971935', '9', 'Phí Ship', 3, '', 15, 1),
+(168, '2023-06-30 00:27:01.403478', '11', 'Phí Ship', 1, '[{\"added\": {}}]', 15, 1),
+(169, '2023-07-01 16:18:25.533467', '1', 'admin', 2, '[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]', 4, 1),
+(170, '2023-07-01 17:10:31.265592', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[{\"changed\": {\"name\": \"Chi Ti\\u1ebft \\u0110\\u01a1n H\\u00e0ng\", \"object\": \"M\\u00e3 \\u0110\\u01a1n H\\u00e0ng: 2 - S\\u1ea3n Ph\\u1ea9m: ALBUM ENHYPEN - DARK BLOOD ghfkfhgj - Gi\\u00e1 B\\u00e1n: 200000 - S\\u1ed1 L\\u01b0\\u1ee3ng: 2 - T\\u1ed5ng Ti\\u1ec1n: 400000\", \"fields\": [\"SoLuong\"]}}]', 23, 1),
+(171, '2023-07-01 17:10:55.662848', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[{\"changed\": {\"name\": \"Chi Ti\\u1ebft \\u0110\\u01a1n H\\u00e0ng\", \"object\": \"M\\u00e3 \\u0110\\u01a1n H\\u00e0ng: 2 - S\\u1ea3n Ph\\u1ea9m: ALBUM ENHYPEN - DARK BLOOD ghfkfhgj - Gi\\u00e1 B\\u00e1n: 200000 - S\\u1ed1 L\\u01b0\\u1ee3ng: 3 - T\\u1ed5ng Ti\\u1ec1n: 600000\", \"fields\": [\"SoLuong\"]}}]', 23, 1),
+(172, '2023-07-01 17:13:29.906048', '2', 'MKH: 1 - Tổng Tiền: 1596500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[{\"changed\": {\"name\": \"Chi Ti\\u1ebft \\u0110\\u01a1n H\\u00e0ng\", \"object\": \"M\\u00e3 \\u0110\\u01a1n H\\u00e0ng: 2 - S\\u1ea3n Ph\\u1ea9m: ALBUM ENHYPEN - DARK BLOOD ghfkfhgj - Gi\\u00e1 B\\u00e1n: 200000 - S\\u1ed1 L\\u01b0\\u1ee3ng: 1 - T\\u1ed5ng Ti\\u1ec1n: 200000\", \"fields\": [\"SoLuong\"]}}]', 23, 1),
+(173, '2023-07-01 17:13:41.074970', '2', 'MKH: 1 - Tổng Tiền: 1796500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[{\"changed\": {\"name\": \"Chi Ti\\u1ebft \\u0110\\u01a1n H\\u00e0ng\", \"object\": \"M\\u00e3 \\u0110\\u01a1n H\\u00e0ng: 2 - S\\u1ea3n Ph\\u1ea9m: ALBUM ENHYPEN - DARK BLOOD ghfkfhgj - Gi\\u00e1 B\\u00e1n: 200000 - S\\u1ed1 L\\u01b0\\u1ee3ng: 2 - T\\u1ed5ng Ti\\u1ec1n: 400000\", \"fields\": [\"SoLuong\"]}}]', 23, 1),
+(174, '2023-07-01 17:16:52.218425', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[]', 23, 1),
+(175, '2023-07-01 17:19:21.980203', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 3, '', 23, 1),
+(176, '2023-07-01 17:19:21.982224', '1', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 16:57:23 - Trạng Thái: 1', 3, '', 23, 1),
+(177, '2023-07-01 17:28:38.895382', '3', 'MKH: 1 - Tổng Tiền: 451500 - Thời Gian: 2023-07-01 17:19:51 - Trạng Thái: dcbh', 2, '[{\"changed\": {\"fields\": [\"TrangThai\"]}}]', 23, 1);
 
 -- --------------------------------------------------------
 
@@ -479,6 +490,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (5, 'contenttypes', 'contenttype'),
 (18, 'customer', 'khachhang'),
 (17, 'news', 'tintuc'),
+(22, 'order', 'chitietdonhang'),
+(23, 'order', 'donhang'),
 (7, 'product', 'chuyenmuc'),
 (8, 'product', 'mausac'),
 (9, 'product', 'sanpham'),
@@ -562,7 +575,14 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (51, 'cart', '0002_alter_sanphamgiohang_giaban_and_more', '2023-06-28 11:08:30.891913'),
 (52, 'cart', '0003_remove_giohang_sanphamgiohang_giohang_giaban_and_more', '2023-06-28 21:50:19.235208'),
 (53, 'website', '0015_alter_thongtin_options', '2023-06-28 21:50:19.241947'),
-(54, 'cart', '0004_alter_giohang_khachhang', '2023-06-28 21:53:59.803486');
+(54, 'cart', '0004_alter_giohang_khachhang', '2023-06-28 21:53:59.803486'),
+(55, 'order', '0001_initial', '2023-07-01 11:59:45.837512'),
+(56, 'order', '0002_donhang_ghichu_alter_donhang_trangthai', '2023-07-01 16:32:15.711431'),
+(57, 'order', '0003_alter_chitietdonhang_giaban_and_more', '2023-07-01 16:42:41.485416'),
+(58, 'order', '0004_alter_donhang_trangthai', '2023-07-01 17:03:51.524960'),
+(59, 'order', '0005_alter_donhang_trangthai', '2023-07-01 17:04:51.039199'),
+(60, 'order', '0006_alter_donhang_trangthai', '2023-07-01 17:06:05.300276'),
+(61, 'order', '0007_alter_donhang_trangthai', '2023-07-01 17:08:59.124619');
 
 -- --------------------------------------------------------
 
@@ -581,9 +601,9 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('b8aakepwn2htctskqnjbki0x4idogghz', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qFcXU:LG-7-r0JkBD1rpb4gTtE1olbKKJkGnyrN0UxpfwTsg8', '2023-07-15 15:29:32.994796'),
 ('hmss158a2wfntfqswnmuc218nsqfpp2i', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qCLAD:tvX0OPlLeSwRbdu1i7XqPZehzJZfDxFM2YRR3wH7sqA', '2023-07-06 14:19:57.578255'),
-('l0h04vvy7o1i1kgzrk55xshndo6ohzrd', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEDYo:oNTzqN1YCYs8WK2T02sgP20sK5NlUgOUYi0G1ioJe4U', '2023-07-11 18:37:06.094192'),
-('zfbxc9eum0h1fylc5f42ouyy47ghhjgo', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEzqZ:l-NxBTwTZoAU9Hvq89GQ8N8WfgN6Ui43i9VUT-HTJz0', '2023-07-13 22:10:39.516645');
+('l0h04vvy7o1i1kgzrk55xshndo6ohzrd', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEDYo:oNTzqN1YCYs8WK2T02sgP20sK5NlUgOUYi0G1ioJe4U', '2023-07-11 18:37:06.094192');
 
 -- --------------------------------------------------------
 
@@ -616,6 +636,55 @@ INSERT INTO `news_tintuc` (`id`, `TieuDe`, `NoiDung`, `AnhChinh`, `The`, `create
 (7, 'G-Dragon - ông hoàng Kpop', '<p>Ng&ocirc;i sao Kpop G-Dragon được b&aacute;o Mỹ b&igrave;nh chọn l&agrave; một trong những l&yacute; do khiến th&agrave;nh phố Seoul, H&agrave;n Quốc tuyệt vời hơn.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"G-Dragon đón sinh nhật lần thứ 31 hôm nay (18/8). Trên các mạng xã hội, diễn đàn châu Á, nhiều khán giả đăng lại loạt ảnh ca sĩ thời thơ ấu, ảnh thời trang và các MV ca nhạc của anh. Đa số chúc anh sinh nhật vui vẻ, tiếp tục cống hiến cho làng thời trang và âm nhạc thế giới. Ảnh thủ lĩnh Big Bang lúc 5 tuổi nhận mưa lời khen. Anh được khen đáng yêu, có phong cách, thần thái của ngôi sao từ khi còn bé. Trên Twitter, nhiều khán giả nói ca sĩ sinh ra để làm ngôi sao. Ảnh: Naver\" src=\"https://i1-giaitri.vnecdn.net/2020/08/18/g-dragon-7584-1597716740.png?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=zqtTrrQEr-PhpwEHOQLHWA\" /></p>\r\n\r\n<p>G-Dragon đ&oacute;n sinh nhật lần thứ 31 h&ocirc;m nay (18/8). Tr&ecirc;n c&aacute;c mạng x&atilde; hội, diễn đ&agrave;n ch&acirc;u &Aacute;, nhiều kh&aacute;n giả đăng lại loạt ảnh ca sĩ thời thơ ấu, dự show thời trang v&agrave; c&aacute;c MV ca nhạc của anh. Đa số ch&uacute;c anh sinh nhật vui vẻ v&agrave; tiếp tục &quot;g&acirc;y b&atilde;o&quot; to&agrave;n cầu với những sản phẩm &acirc;m nhạc v&agrave; phong c&aacute;ch thời trang c&aacute; t&iacute;nh. Ảnh thủ lĩnh Big Bang l&uacute;c năm tuổi được khen đ&aacute;ng y&ecirc;u v&agrave; thần th&aacute;i của người nổi tiếng. Tr&ecirc;n&nbsp;<em>Twitter</em>, nhiều kh&aacute;n giả n&oacute;i G-Dragon sinh ra để l&agrave;m ng&ocirc;i sao.</p>\r\n\r\n<p>Video ch&uacute;c mừng sinh nhật G-Dragon do cộng đồng fan tại Trung Quốc thực hiện được ph&aacute;t tại Incheon Songdo (H&agrave;n Quốc) từ ng&agrave;y 1 đến 31/8. Video:&nbsp;<em>G-Dragon China Bar.</em></p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"[Hồi tháng 3, KingChoice là trang web bình chọn uy tín hàng đầu của Hàn Quốc, nơi netizen Hàn thể hiện mức độ yêu mến đối với các nghệ sĩ Kpop. Mới đây, trang web này đã tổ chức một cuộc bình chọn để chọn ra idol Kpop đỉnh nhất thập kỷ qua. Sau đúng 1 tháng bình chọn, từ 100 ứng viên, top 50 đã lộ diện và gương mặt đỉnh nhất cũng đã được gọi tên.Hạng 1: G-Dragon (BIGBANG)G-Dragon dẫn đầu BXH với 3,2 triệu phiếu bầu. Vốn nổi tiếng với danh xưng ông hoàng Kpop, trưởng nhóm BIGBANG thực sự là một màu sắc độc - lạ, đa-zi-năng của nền âm nhạc này bởi cá tính âm nhạc, thời trang và có tầm ảnh hưởng mạnh mẽ đối với đất nước Hàn Quốc. Anh chàng quả thật xứng đáng với vị trí số 1.hương trình TMI News của đài Mnet đã lựa chọn 7 boygroup và nam ca sĩ solo thành công nhất trong việc chinh phục các đỉnh cao sự nghiệp, không những khiến fan nở mày nở mặt mà còn làm đất nước Hàn Quốc tự hào.Trưởng nhóm G-Dragon của BIGBANG được bình chọn ở vị trí thứ 3 và được coi là nam idol Kpop đình đám nhất. Anh nổi tiếng không chỉ nhờ âm nhạc đỉnh cao, chinh phục trái tim của hàng nghìn fan hâm mộ trên thế giới mà còn bởi phong cách thời trang cực chất.\" src=\"https://i1-giaitri.vnecdn.net/2020/08/18/g-dragon-90-3865-1597716740.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=PTXs0vw2PZ8OrxFyxTNK6Q\" /></p>\r\n\r\n<p>Ca sĩ được khen trẻ trung so với tuổi trong bộ ảnh quảng c&aacute;o của thương hiệu đồ uống do anh l&agrave;m đại diện hồi th&aacute;ng 5.<br />\r\nG-Dragon l&agrave; rapper, ca sĩ, nhạc sĩ v&agrave; nh&agrave; sản xuất h&agrave;ng đầu H&agrave;n Quốc. Anh ra mắt năm 2006 với vai tr&ograve; l&agrave; trưởng nh&oacute;m nhạc H&agrave;n Quốc Big Bang. Ngo&agrave;i ra, anh ph&aacute;t triển sự nghiệp solo với loạt album như &quot;Heartbreaker&quot;, &quot;GD &amp; TOP&quot;, &quot;Bullshit&quot;... Ca sĩ đứng số một trong cuộc b&igrave;nh chọn &quot;Idol Kpop đỉnh nhất thập kỷ qua&quot; do KingChoice - trang web b&igrave;nh chọn h&agrave;ng đầu H&agrave;n Quốc - thực hiện hồi th&aacute;ng 3, với 3,2 triệu phiếu bầu. Theo&nbsp;<em>Naver</em>, anh được truyền th&ocirc;ng v&agrave; người h&acirc;m mộ t&ocirc;n vinh l&agrave; &quot;&ocirc;ng ho&agrave;ng Kpop&quot; bởi sự th&agrave;nh c&ocirc;ng, tầm ảnh hưởng trong &acirc;m nhạc, thời trang. Ảnh:&nbsp;<em>Nongfu.</em></p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"[G-Dragon trong show diễn của Chanel tại Tuần lễ Thời trang Haute Couture Paris Xuân Hè 2020Từ khóa #GDatChanel đứng đầu Twitter toàn cầu. Năm 2016, nam ca sĩ chính thức trở thành gương mặt đại diện của nhà mốt Pháp. Ảnh: AFPChương trình TMI NEWS bình chọn G-Dragon đứng thứ 2 trong cuộc bình chọn idol có gu thời trang đắt đỏ nhất. Lý giải cho việc anh đứng thứ 2 là vì có nhiều trang phục được các hãng thiết kế riêng cho anh nên chương trình không thể định giá được.Công chúng Hàn Quốc biết rằng mọi thứ mà G-Dragon mặc đều trở thành xu hướng, thậm chí sau nhiều năm và bất kể nó rẻ hay đắt. Phá vỡ ranh giới về giới tính\" src=\"https://i1-giaitri.vnecdn.net/2020/08/18/g-dragon-2-3743-1597716740.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=a3NohLeEyE_BrDdvjiwwHg\" /></p>\r\n\r\n<p>Thủ lĩnh Big Bang trong show diễn của Chanel tại Tuần lễ thời trang Haute Couture Paris Xu&acirc;n H&egrave; 2020 hồi th&aacute;ng 1. Anh l&agrave; gương mặt đại diện to&agrave;n cầu của nh&agrave; mốt Ph&aacute;p từ năm 2016. Show diễn l&agrave; sự kiện đầu ti&ecirc;n G-Dragon tham gia sau khi xuất ngũ n&ecirc;n được truyền th&ocirc;ng, người h&acirc;m mộ săn đ&oacute;n. Từ kh&oacute;a #GDatChanel đứng đầu top thịnh h&agrave;nh to&agrave;n cầu của&nbsp;<em>Twitter</em>. Tờ&nbsp;<em>Telegraph</em>&nbsp;của Anh gọi đ&acirc;y l&agrave; &quot;sự trở lại của vị vua&quot; v&agrave; đưa ca sĩ v&agrave;o danh s&aacute;ch những &quot;n&agrave;ng thơ&quot; dẫn đầu xu hướng thời trang 2020. Trong khi đ&oacute;,&nbsp;<em>Vogue Korea</em>&nbsp;số ra th&aacute;ng 3 nhận định: &quot;C&oacute; hai từ viết tắt quyền lực nhất vũ trụ, đ&oacute; l&agrave; GD v&agrave; CC (G-Dragon v&agrave; Chanel)&quot;. Ảnh:&nbsp;<em>AFP.</em></p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"[ Đôi giày Nike do G-Dragon thiết kế chỉ mất vài phút để sold out toàn cầu.Cuối cùng, thì Para-noise của NIKE Air Force do G-Dragon thiết kế đã được chính thức được phát hành và không mất nhiều thời gian cho đến khi nó sold out hoàn toàn trên toàn thế giới, điều đó cho thấy tầm ảnh hưởng lớn của trưởng nhóm BIGBANG.Cá nhân G-Dragon đã xuất hiện trong sự kiện diễn ra vào ngày hôm qua (23/11) lần đầu tiên xuất hiện trước công chúng sau khi xuất ngũ và nhiều người hâm mộ đã chờ đợi anh ấy khi anh ấy biểu diễn nghệ thuật.Ở Trung Quốc chỉ mất 0,06 giây để sold out, trên weibo nó thu hút 150 triệu người xem tin tức này vì họ đều sốc tại sao nó sold out quá nhanh, ở Mỹ và Canada chỉ mất 5 phút, ở Úc chỉ mất 10 phút, và ở Anh (UK) chỉ mất 2 phút, tổng cộng đôi giày AF1 Para-noise chỉ mất 30 phút để sold out toàn cầu từ đông sang tây với 44 quốc gia.Tên của G-Dragon cũng lọt top trend toàn cầu trong nhiều giờ sau khi mọi người điều rất thích thú với sự kiện này.(Một thông tin khác đó là theo thống kê của Google, thì vào hôm qua từ khóa Nike Air Force đã đạt tỉ lệ tìm kiếm cao nhất trong 15 năm qua (2004) kể từ khi sản phẩm này ra đời). Ảnh: Instagram.\" src=\"https://i1-giaitri.vnecdn.net/2020/08/18/g-dragon-4-1172-1597716740.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=sU6IFLOFJC91m3P4lwIYLg\" /></p>\r\n\r\n<p>G-Dragon trong h&igrave;nh ảnh quảng c&aacute;o mẫu&nbsp;<a href=\"https://vnexpress.net/sao-viet-theo-mot-giay-hoa-cuc-cua-g-dragon-4032432.html\" rel=\"dofollow\">gi&agrave;y hoa c&uacute;c</a>&nbsp;Para-Noise của Nike Air Force do ch&iacute;nh anh thiết kế, th&aacute;ng 11/2019. Gi&agrave;y được ph&aacute;t h&agrave;nh to&agrave;n cầu ng&agrave;y 23/11 v&agrave; &quot;ch&aacute;y h&agrave;ng&quot; chỉ sau v&agrave;i ph&uacute;t. Theo&nbsp;<em>Sina</em>, tại Trung Quốc c&oacute; hơn 150 triệu người theo d&otilde;i sự kiện ra mắt sản phẩm tr&ecirc;n&nbsp;<em>Weibo</em>&nbsp;v&agrave; chỉ mất 0,06 gi&acirc;y để b&aacute;n h&agrave;ng. Ở Anh, sản phẩm hết h&agrave;ng chỉ sau hai ph&uacute;t mở b&aacute;n, Mỹ, Canada 5 ph&uacute;t v&agrave; tại Australia l&agrave; 10 ph&uacute;t. Theo thống k&ecirc; của<em>&nbsp;Google</em>, từ kh&oacute;a Nike Air Force đạt tỉ lệ t&igrave;m kiếm cao nhất trong 15 năm qua, kể từ khi d&ograve;ng sản phẩm n&agrave;y ra đời. T&ecirc;n của G-Dragon cũng v&agrave;o top thịnh h&agrave;nh tr&ecirc;n&nbsp;<em>Twitter</em>&nbsp;trong nhiều giờ. Gi&agrave;y c&oacute; gi&aacute; khoảng 200 USD (4,6 triệu đồng). Do khan hiếm h&agrave;ng, nhiều người chấp nhận mua lại với gi&aacute; 14 - 17 triệu đồng t&ugrave;y size. Ảnh:<em>&nbsp;Instagram</em>.</p>', 'uploads/image001-2987-1672375660_dEPEItV.png', 'gdragon, kpop', '2023-06-16 08:03:18.569906', '2023-06-16 08:03:18.569906', 'g-dragon-ong-hoang-kpop'),
 (8, 'BTS làm show trực tuyến', '<p>Nh&oacute;m nhạc nam BTS tổ chức đ&ecirc;m diễn trực tuyến để chiều l&ograve;ng fan, b&ugrave; cho việc hủy show v&igrave; dịch.</p>\r\n\r\n<p>Theo&nbsp;<em>Variety</em>, đại diện BTS cho biết show&nbsp;<em>Bang Bang Con: The Live</em>&nbsp;được ph&aacute;t s&oacute;ng tối 14/6&nbsp;theo giờ H&agrave;n Quốc, y&ecirc;u cầu người xem trả ph&iacute;. Chương tr&igrave;nh dự kiến k&eacute;o d&agrave;i 90 ph&uacute;t, gồm c&aacute;c phần diễn trực tiếp v&agrave; một số nội dung đặc biệt do nh&oacute;m chuẩn bị. Mức ph&iacute; v&agrave; c&aacute;ch thức theo d&otilde;i&nbsp;được cập nhật tr&ecirc;n trang chủ của nh&oacute;m trong v&agrave;i tuần tới.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"Nhóm BTS. Ảnh: Big Hit.\" src=\"https://i1-giaitri.vnecdn.net/2020/05/15/Bts-3812-1589513412.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=JD-BFXYehPjvvGy40S_Efg\" /></p>\r\n\r\n<p style=\"text-align:center\">Nh&oacute;m BTS. Ảnh:&nbsp;<em>BigHit.</em></p>\r\n\r\n<p>Gần đ&acirc;y,&nbsp;<a href=\"https://vnexpress.net/giai-tri/6-cot-moc-trong-su-nghiep-bts-4092460.html\" rel=\"dofollow\">BTS</a>&nbsp;thử nghiệm ph&aacute;t s&oacute;ng c&aacute;c video biểu diễn hay sự kiện gặp gỡ fan tr&ecirc;n mạng, thu h&uacute;t hơn 50,6 triệu lượt xem. Số người xem c&ugrave;ng l&uacute;c cao nhất l&ecirc;n tới 2,24 triệu người.</p>\r\n\r\n<p>Boyband H&agrave;n Quốc ph&aacute;t h&agrave;nh album thứ tư&nbsp;<em><a href=\"https://vnexpress.net/giai-tri/album-cua-bts-dung-dau-billboard-4063032.html\" rel=\"dofollow\">Map Of The Soul: 7</a></em>&nbsp;hồi th&aacute;ng 2 Show quảng b&aacute; của họ dự kiến bắt đầu từ th&aacute;ng 4 nhưng bị ho&atilde;n v&igrave; dịch. Nh&oacute;m hiện tr&aacute;nh dịch tại Seoul, tiếp tục chuẩn bị những dự &aacute;n mới.</p>\r\n\r\n<p>BTS được th&agrave;nh lập năm 2010 v&agrave; hoạt động từ th&aacute;ng 5/2013. Bảy ch&agrave;ng trai c&oacute; li&ecirc;n tiếp bốn&nbsp;album đứng đầu bảng xếp hạng Billboard. Th&aacute;ng 4/2019, nh&oacute;m được vinh danh trong danh s&aacute;ch&nbsp;<a href=\"https://vnexpress.net/bts-vao-top-100-nguoi-anh-huong-nam-2019-3911387.html\" rel=\"dofollow\">100 người ảnh hưởng</a>&nbsp;nhất thế giới của&nbsp;<em>Time.&nbsp;</em></p>', 'uploads/t-o-p-BIG-BANG-2-6528-1670555527_WUsQZ8o.jpg', 'BTS, Kpop', '2023-06-16 08:03:59.520532', '2023-06-16 08:03:59.520532', 'bts-lam-show-truc-tuyen'),
 (9, 'BTS đang đầu top sao quyền lực tại Hàn Quốc', '<p>Nh&oacute;m nhạc BTS vượt Blackpink, dẫn đầu danh sách&nbsp;40 ng&ocirc;i sao quy&ecirc;̀n lực nh&acirc;́t năm tại H&agrave;n Quốc.</p>\r\n\r\n<p>Ng&agrave;y 28/4,&nbsp;<em>Forbes Korea</em>&nbsp;c&ocirc;ng bố danh s&aacute;ch&nbsp;những nh&acirc;n vật nổi tiếng quyền lực - Korea Power Celebrity. BTS đứng hạng nhất, tăng hai hạng so với năm ngo&aacute;i.&nbsp;Nh&oacute;m nhạc nam được đ&aacute;nh gi&aacute;&nbsp;th&agrave;nh c&ocirc;ng với&nbsp;album&nbsp;<em>Map of the Soul: 7</em>, ph&aacute; h&agrave;ng loạt&nbsp;<a href=\"https://vnexpress.net/bts-lap-ky-luc-4058720.html\" rel=\"dofollow\" target=\"_blank\">kỷ lục</a>&nbsp;về lượt xem, doanh thu trong nước v&agrave; thế giới.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"BTS tại lễ trao giải Grammy 2020. Ảnh: Yahoo.\" src=\"https://i1-giaitri.vnecdn.net/2020/04/28/Bts-5719-1588083337.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=n9cTo6M_QhesVoZug83GhQ\" /></p>\r\n\r\n<p style=\"text-align:center\">BTS tại lễ trao giải Grammy 2020. Ảnh:<em>&nbsp;Yahoo.</em></p>\r\n\r\n<p>Kết quả n&agrave;y được c&ocirc;ng bố thường ni&ecirc;n v&agrave;o khoảng th&aacute;ng 4, dựa tr&ecirc;n bốn chỉ số: lợi nhuận (từ việc đ&oacute;ng phim, b&aacute;n album, hợp đồng quảng c&aacute;o v&agrave; kinh doanh), quan hệ truyền th&ocirc;ng, hoạt động&nbsp;v&agrave; sức ảnh hưởng tr&ecirc;n mạng x&atilde; hội.&nbsp;</p>\r\n\r\n<p>BTS được th&agrave;nh lập năm 2010 v&agrave; hoạt động từ th&aacute;ng 5/2013.&nbsp;Bảy ch&agrave;ng trai c&oacute; li&ecirc;n tiếp ba album đứng đầu bảng xếp hạng Billboard trong 11 th&aacute;ng, th&agrave;nh t&iacute;ch chưa nghệ sĩ n&agrave;o đạt được từ năm 1995. Th&aacute;ng 4/2019, nh&oacute;m được vinh danh trong danh s&aacute;ch&nbsp;<a href=\"https://vnexpress.net/bts-vao-top-100-nguoi-anh-huong-nam-2019-3911387.html\" rel=\"dofollow\">100 người ảnh hưởng</a>nhất thế giới của<em>Time.&nbsp;</em>BTS l&agrave; nghệ sĩ ch&acirc;u &Aacute; duy nhất g&oacute;p mặt trong bảng xếp hạng.&nbsp;</p>', 'uploads/Bts-5719-1588083337.jpg', 'BTS, Kpop', '2023-06-16 08:04:55.730326', '2023-06-16 10:50:10.000060', 'bts-ang-au-top-sao-quyen-luc-tai-han-quoc');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_chitietdonhang`
+--
+
+CREATE TABLE `order_chitietdonhang` (
+  `id` bigint(20) NOT NULL,
+  `GiaBan` int(11) DEFAULT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `TongTien` int(11) DEFAULT NULL,
+  `DonHang_id` bigint(20) NOT NULL,
+  `SanPham_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `order_chitietdonhang`
+--
+
+INSERT INTO `order_chitietdonhang` (`id`, `GiaBan`, `SoLuong`, `TongTien`, `DonHang_id`, `SanPham_id`) VALUES
+(13, 200000, 1, 200000, 3, 14),
+(14, 200000, 1, 200000, 3, 13),
+(15, 200000, 1, 200000, 4, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_donhang`
+--
+
+CREATE TABLE `order_donhang` (
+  `id` bigint(20) NOT NULL,
+  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `DiaChi` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `TongTien` int(11) NOT NULL,
+  `ThoiGian` datetime(6) NOT NULL,
+  `TrangThai` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `KhachHang_id` bigint(20) NOT NULL,
+  `GhiChu` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `order_donhang`
+--
+
+INSERT INTO `order_donhang` (`id`, `SoDienThoai`, `DiaChi`, `TongTien`, `ThoiGian`, `TrangThai`, `KhachHang_id`, `GhiChu`) VALUES
+(3, '0999999999', 'Hà Nội', 451500, '2023-07-01 17:19:51.497488', 'dcbh', 3, ''),
+(4, '0999999999', 'Hà Nội', 241500, '2023-07-01 17:29:05.790087', 'cxl', 3, '');
 
 -- --------------------------------------------------------
 
@@ -926,8 +995,8 @@ INSERT INTO `website_thongtin` (`id`, `GiaTri`, `HinhAnh`, `LoaiThongTin_id`) VA
 (5, 'ShopKpop.com - Chuyên cung cấp sản phẩm liên quan đến thần tượng Kpop Hàn Quốc tại Việt Nam', '', 5),
 (6, NULL, 'uploads/20180321_m6MxRVaBcYhDLYywnjd4W8ci.webp', 6),
 (8, NULL, 'uploads/logo_IUtvDYS.png', 7),
-(9, '30000', '', 8),
-(10, '5', '', 9);
+(10, '5', '', 9),
+(11, '30000', '', 8);
 
 --
 -- Indexes for dumped tables
@@ -1037,6 +1106,21 @@ ALTER TABLE `news_tintuc`
   ADD KEY `news_tintuc_DuongDan_91dc3f60` (`DuongDan`);
 
 --
+-- Indexes for table `order_chitietdonhang`
+--
+ALTER TABLE `order_chitietdonhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_chitietdonhang_DonHang_id_1115646e_fk_order_donhang_id` (`DonHang_id`),
+  ADD KEY `order_chitietdonhang_SanPham_id_c606706e_fk_product_sanpham_id` (`SanPham_id`);
+
+--
+-- Indexes for table `order_donhang`
+--
+ALTER TABLE `order_donhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_donhang_KhachHang_id_593be4ef_fk_customer_khachhang_id` (`KhachHang_id`);
+
+--
 -- Indexes for table `product_chuyenmuc`
 --
 ALTER TABLE `product_chuyenmuc`
@@ -1133,7 +1217,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -1157,7 +1241,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `cart_giohang`
 --
 ALTER TABLE `cart_giohang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `contact_lienhe`
@@ -1175,25 +1259,37 @@ ALTER TABLE `customer_khachhang`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `news_tintuc`
 --
 ALTER TABLE `news_tintuc`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `order_chitietdonhang`
+--
+ALTER TABLE `order_chitietdonhang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `order_donhang`
+--
+ALTER TABLE `order_donhang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_chuyenmuc`
@@ -1259,7 +1355,7 @@ ALTER TABLE `website_slide`
 -- AUTO_INCREMENT for table `website_thongtin`
 --
 ALTER TABLE `website_thongtin`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -1312,6 +1408,19 @@ ALTER TABLE `customer_khachhang`
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `order_chitietdonhang`
+--
+ALTER TABLE `order_chitietdonhang`
+  ADD CONSTRAINT `order_chitietdonhang_DonHang_id_1115646e_fk_order_donhang_id` FOREIGN KEY (`DonHang_id`) REFERENCES `order_donhang` (`id`),
+  ADD CONSTRAINT `order_chitietdonhang_SanPham_id_c606706e_fk_product_sanpham_id` FOREIGN KEY (`SanPham_id`) REFERENCES `product_sanpham` (`id`);
+
+--
+-- Constraints for table `order_donhang`
+--
+ALTER TABLE `order_donhang`
+  ADD CONSTRAINT `order_donhang_KhachHang_id_593be4ef_fk_customer_khachhang_id` FOREIGN KEY (`KhachHang_id`) REFERENCES `customer_khachhang` (`id`);
 
 --
 -- Constraints for table `product_sanpham`
