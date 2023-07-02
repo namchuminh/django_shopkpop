@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2023 at 07:33 PM
+-- Generation Time: Jul 02, 2023 at 07:45 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -180,7 +180,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$320000$RQko2mlNvgIJE1sc8lAlm2$kKdOKU8skgBG3xSDa1xdckUTuKnys0hx3ONqQP3ZTjs=', '2023-07-01 15:29:32.000000', 1, 'admin', 'Nam Chu', 'Minh', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.000000'),
+(1, 'pbkdf2_sha256$320000$RQko2mlNvgIJE1sc8lAlm2$kKdOKU8skgBG3xSDa1xdckUTuKnys0hx3ONqQP3ZTjs=', '2023-07-02 04:54:42.506392', 1, 'admin', 'Nam Chu', 'Minh', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.000000'),
 (2, 'pbkdf2_sha256$320000$4MS3iZ4Tp9gpTkuB4Y7ZvE$gGoIQCUBaF2YJPeCZ9FPfojGjueHkKBav535GrT0HR8=', '2023-06-22 12:16:07.109468', 0, 'nam', 'Chu Minh', 'Nam', 'namchuminh@gmail.com', 0, 1, '2023-06-22 10:17:55.648828'),
 (3, 'pbkdf2_sha256$320000$3jmllDEOOrucsOVyKZw1u9$TRUsXbP6qDUoSDQoQUQ089m/DunFo4esM+6Q5d6/LJQ=', '2023-06-22 14:06:08.440898', 0, 'nam2', 'a', 'a', 'a@gmail.com', 0, 1, '2023-06-22 10:21:52.025011');
 
@@ -224,6 +224,15 @@ CREATE TABLE `cart_giohang` (
   `SoLuong` int(11) NOT NULL,
   `TenSanPham` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cart_giohang`
+--
+
+INSERT INTO `cart_giohang` (`id`, `KhachHang_id`, `GiaBan`, `MauSac_id`, `MoTaNgan`, `SanPham_id`, `SoLuong`, `TenSanPham`) VALUES
+(49, 3, 250000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 2, 1, 'ALBUM ENHYPEN - DARK BLOOD ydsgdfs'),
+(50, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 15, 1, 'ALBUM ENHYPEN - DARK BLOOD TYUI'),
+(51, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 14, 1, 'ALBUM ENHYPEN - DARK BLOOD IUDFGOI');
 
 -- --------------------------------------------------------
 
@@ -461,7 +470,14 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (174, '2023-07-01 17:16:52.218425', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 2, '[]', 23, 1),
 (175, '2023-07-01 17:19:21.980203', '2', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 17:10:00 - Trạng Thái: cxl', 3, '', 23, 1),
 (176, '2023-07-01 17:19:21.982224', '1', 'MKH: 1 - Tổng Tiền: 1396500 - Thời Gian: 2023-07-01 16:57:23 - Trạng Thái: 1', 3, '', 23, 1),
-(177, '2023-07-01 17:28:38.895382', '3', 'MKH: 1 - Tổng Tiền: 451500 - Thời Gian: 2023-07-01 17:19:51 - Trạng Thái: dcbh', 2, '[{\"changed\": {\"fields\": [\"TrangThai\"]}}]', 23, 1);
+(177, '2023-07-01 17:28:38.895382', '3', 'MKH: 1 - Tổng Tiền: 451500 - Thời Gian: 2023-07-01 17:19:51 - Trạng Thái: dcbh', 2, '[{\"changed\": {\"fields\": [\"TrangThai\"]}}]', 23, 1),
+(178, '2023-07-02 05:02:10.393545', '6', 'Yellow', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
+(179, '2023-07-02 05:02:13.608150', '5', 'Red', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
+(180, '2023-07-02 05:02:17.777279', '4', 'White', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
+(181, '2023-07-02 05:02:22.592733', '3', 'Blue', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
+(182, '2023-07-02 05:02:29.400869', '2', 'Green', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
+(183, '2023-07-02 05:08:14.203564', '15', 'ALBUM ENHYPEN - DARK BLOOD TYUI', 2, '[{\"changed\": {\"fields\": [\"MoTaDai\"]}}]', 9, 1),
+(184, '2023-07-02 05:11:56.036203', '15', 'ALBUM ENHYPEN - DARK BLOOD TYUI', 2, '[{\"changed\": {\"fields\": [\"MoTaDai\"]}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -582,7 +598,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (58, 'order', '0004_alter_donhang_trangthai', '2023-07-01 17:03:51.524960'),
 (59, 'order', '0005_alter_donhang_trangthai', '2023-07-01 17:04:51.039199'),
 (60, 'order', '0006_alter_donhang_trangthai', '2023-07-01 17:06:05.300276'),
-(61, 'order', '0007_alter_donhang_trangthai', '2023-07-01 17:08:59.124619');
+(61, 'order', '0007_alter_donhang_trangthai', '2023-07-01 17:08:59.124619'),
+(62, 'product', '0008_alter_sanpham_motadai', '2023-07-02 05:05:22.294263');
 
 -- --------------------------------------------------------
 
@@ -601,9 +618,9 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('b8aakepwn2htctskqnjbki0x4idogghz', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qFcXU:LG-7-r0JkBD1rpb4gTtE1olbKKJkGnyrN0UxpfwTsg8', '2023-07-15 15:29:32.994796'),
 ('hmss158a2wfntfqswnmuc218nsqfpp2i', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qCLAD:tvX0OPlLeSwRbdu1i7XqPZehzJZfDxFM2YRR3wH7sqA', '2023-07-06 14:19:57.578255'),
-('l0h04vvy7o1i1kgzrk55xshndo6ohzrd', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEDYo:oNTzqN1YCYs8WK2T02sgP20sK5NlUgOUYi0G1ioJe4U', '2023-07-11 18:37:06.094192');
+('l0h04vvy7o1i1kgzrk55xshndo6ohzrd', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEDYo:oNTzqN1YCYs8WK2T02sgP20sK5NlUgOUYi0G1ioJe4U', '2023-07-11 18:37:06.094192'),
+('v3le70rpb55fqkv82p9dne2lsj1xqagm', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qFp6g:YGpQCVJMTtmaHfB1CEo-GTuffGasod32je4tmHw28vI', '2023-07-16 04:54:42.516578');
 
 -- --------------------------------------------------------
 
@@ -728,11 +745,11 @@ CREATE TABLE `product_mausac` (
 
 INSERT INTO `product_mausac` (`id`, `TenMauSac`, `MaMauSac`, `created_at`, `updated_at`) VALUES
 (1, 'Theme', '#837678', '2023-06-14 08:47:25.636460', '2023-06-14 08:47:25.636460'),
-(2, 'Xanh Lá Cây', '#9ac45c', '2023-06-14 08:47:45.024186', '2023-06-22 14:28:49.958941'),
-(3, 'Xanh', '#6d5cc4', '2023-06-14 08:48:00.343719', '2023-06-22 14:28:05.053518'),
-(4, 'Trắng', '#000000', '2023-06-14 08:48:13.511337', '2023-06-22 14:28:01.072028'),
-(5, 'Đỏ', '#ff0000', '2023-06-14 08:48:34.119983', '2023-06-22 14:27:56.711971'),
-(6, 'Vàng', '#ffff00', '2023-06-14 08:48:49.666528', '2023-06-22 14:27:52.407145');
+(2, 'Green', '#9ac45c', '2023-06-14 08:47:45.024186', '2023-07-02 05:02:29.399270'),
+(3, 'Blue', '#6d5cc4', '2023-06-14 08:48:00.343719', '2023-07-02 05:02:22.591303'),
+(4, 'White', '#000000', '2023-06-14 08:48:13.511337', '2023-07-02 05:02:17.776259'),
+(5, 'Red', '#ff0000', '2023-06-14 08:48:34.119983', '2023-07-02 05:02:13.607152'),
+(6, 'Yellow', '#ffff00', '2023-06-14 08:48:49.666528', '2023-07-02 05:02:10.392499');
 
 -- --------------------------------------------------------
 
@@ -777,7 +794,7 @@ INSERT INTO `product_sanpham` (`id`, `TenSanPham`, `GiaKhuyenMai`, `GiaBan`, `Mo
 (12, 'ALBUM ENHYPEN - DARK BLOOD TRET', 400000, 150000, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- MESSAGE PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- STICKER : 1ea / W100*H148 (mm)\r\n- POSTCARD : Random 1 out of 7 by version / W170*H120 (mm)\r\n- BOOK MARK : 1ea by version / W45*H120 (mm)\r\n- FOLDED POSTER : 1ea by version / W250*H360 (mm)', 'album, dark', 'uploads/20230527_FrX0KYrsJr_71HYcEi.jpeg', 'uploads/20230527_FrX0KYrsJr_Cc6t95k.jpeg', 'uploads/20230527_FrX0KYrsJr_BjJqphK.jpeg', 'uploads/20230527_FrX0KYrsJr_6TdPQxt.jpeg', 'album-enhypen-dark-blood-tret', 1, '2023-06-15 10:37:39.878342', '2023-06-15 10:37:39.878342', 1, 62),
 (13, 'ALBUM ENHYPEN - DARK BLOOD KHJKJG', 500000, 200000, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- MESSAGE PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- STICKER : 1ea / W100*H148 (mm)\r\n- POSTCARD : Random 1 out of 7 by version / W170*H120 (mm)\r\n- BOOK MARK : 1ea by version / W45*H120 (mm)\r\n- FOLDED POSTER : 1ea by version / W250*H360 (mm)', 'album, dark', 'uploads/20230527_FrX0KYrsJr_SvM350H.jpeg', 'uploads/20230527_FrX0KYrsJr_o5mmGmq.jpeg', 'uploads/20230527_FrX0KYrsJr_IjiQg8L.jpeg', 'uploads/20230527_FrX0KYrsJr_ne3u8Of.jpeg', 'album-enhypen-dark-blood-khjkjg', 1, '2023-06-15 10:39:01.668188', '2023-06-15 10:39:01.668188', 1, 60),
 (14, 'ALBUM ENHYPEN - DARK BLOOD IUDFGOI', 500000, 200000, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- MESSAGE PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- STICKER : 1ea / W100*H148 (mm)\r\n- POSTCARD : Random 1 out of 7 by version / W170*H120 (mm)\r\n- BOOK MARK : 1ea by version / W45*H120 (mm)\r\n- FOLDED POSTER : 1ea by version / W250*H360 (mm)', 'album, dark', 'uploads/20230527_FrX0KYrsJr_ejyOt9B.jpeg', 'uploads/20230527_FrX0KYrsJr_vS1nz5P.jpeg', 'uploads/20230527_FrX0KYrsJr_w9GRwKo.jpeg', 'uploads/20230527_FrX0KYrsJr_PzpRoam.jpeg', 'album-enhypen-dark-blood-iudfgoi', 1, '2023-06-15 11:27:13.681733', '2023-06-15 11:27:13.681733', 1, 60),
-(15, 'ALBUM ENHYPEN - DARK BLOOD TYUI', 400000, 200000, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- MESSAGE PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)\r\n- STICKER : 1ea / W100*H148 (mm)\r\n- POSTCARD : Random 1 out of 7 by version / W170*H120 (mm)\r\n- BOOK MARK : 1ea by version / W45*H120 (mm)\r\n- FOLDED POSTER : 1ea by version / W250*H360 (mm)', 'album, dark', 'uploads/20230527_FrX0KYrsJr_1iH2Gx8.jpeg', 'uploads/20230527_FrX0KYrsJr_1t4aJMK.jpeg', 'uploads/20230527_FrX0KYrsJr_RnjcSnw.jpeg', 'uploads/20230527_FrX0KYrsJr_Khx9hyA.jpeg', 'album-enhypen-dark-blood-tyui', 1, '2023-06-15 11:27:56.865586', '2023-06-15 11:27:56.865586', 1, 50);
+(15, 'ALBUM ENHYPEN - DARK BLOOD TYUI', 400000, 200000, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', '<p style=\"text-align:justify\">- CD-R : W120*H120 (mm) - PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p</p>\r\n\r\n<p style=\"text-align:justify\">- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)</p>\r\n\r\n<p style=\"text-align:justify\">- MESSAGE PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)</p>\r\n\r\n<p style=\"text-align:justify\">- STICKER : 1ea / W100*H148 (mm)</p>\r\n\r\n<p style=\"text-align:justify\">- POSTCARD : Random 1 out of 7 by version / W170*H120 (mm) - BOOK MARK : 1ea by version / W45*H120 (mm)</p>\r\n\r\n<p style=\"text-align:justify\">- FOLDED POSTER : 1ea by version / W250*H360 (mm)</p>\r\n\r\n<p>&nbsp;</p>', 'album, dark', 'uploads/20230527_FrX0KYrsJr_1iH2Gx8.jpeg', 'uploads/20230527_FrX0KYrsJr_1t4aJMK.jpeg', 'uploads/20230527_FrX0KYrsJr_RnjcSnw.jpeg', 'uploads/20230527_FrX0KYrsJr_Khx9hyA.jpeg', 'album-enhypen-dark-blood-tyui', 1, '2023-06-15 11:27:56.865586', '2023-07-02 05:11:56.034166', 1, 50);
 
 -- --------------------------------------------------------
 
@@ -1241,7 +1258,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `cart_giohang`
 --
 ALTER TABLE `cart_giohang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `contact_lienhe`
@@ -1259,7 +1276,7 @@ ALTER TABLE `customer_khachhang`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -1271,7 +1288,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `news_tintuc`
