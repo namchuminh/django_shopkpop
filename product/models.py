@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify 
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class SanPham(models.Model):
@@ -8,7 +9,7 @@ class SanPham(models.Model):
     GiaBan = models.IntegerField(blank=False, null=False)
     PhanTramGiam = models.IntegerField(blank=True, null=True)
     MoTaNgan = models.TextField(max_length=255)
-    MoTaDai = models.TextField()
+    MoTaDai = RichTextField()
     ChuyenMuc = models.ForeignKey('ChuyenMuc', on_delete=models.CASCADE, blank=False, null=False)
     MauSac = models.ManyToManyField('MauSac', related_name='SanPham', blank=True, null=True)
     The = models.CharField(max_length=255)

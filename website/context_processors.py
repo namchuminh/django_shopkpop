@@ -32,3 +32,9 @@ def giohang_context_processor(request):
         return {'giohang_load': giohang_load, "total_price": total_price, "count_product": count_product}
     else:
         return {'giohang_load': None}
+
+def base_url(request):
+    scheme = 'https' if request.is_secure() else 'http'
+    host = request.META['HTTP_HOST']
+    base_url = f"{scheme}://{host}"
+    return {'base_url': base_url}

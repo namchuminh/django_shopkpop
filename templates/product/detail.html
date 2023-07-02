@@ -178,57 +178,14 @@
                     <div class="ltn__shop-details-tab-menu">
                         <div class="nav">
                             <a class="active show" data-bs-toggle="tab" href="#liton_tab_details_1_1">Mô Tả - Sản Phẩm</a>
-                            <a data-bs-toggle="tab" href="#liton_tab_details_1_3" class="">Bình Luận - Đánh Giá</a>
                         </div>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="liton_tab_details_1_1">
-                            <div class="ltn__shop-details-tab-content-inner text-center">
-                                <p>{{ sanpham.MoTaDai }}</p>
+                            <div class="" style="line-height: 5px;">
+                                {{ sanpham.MoTaDai|safe }}
                             </div>
                         </div>
-                        
-                        <div class="tab-pane fade" id="liton_tab_details_1_3">
-                            <div class="ltn__shop-details-tab-content-inner">
-                                <!-- comment-area -->
-                                <div class="ltn__comment-area mb-30">
-                                    <h4 class="title-2">Bình Luận</h4>
-                                    <div class="ltn__comment-inner">
-                                        <ul>
-
-                                            <li>
-                                                <div class="ltn__comment-item clearfix">
-                                                    <div class="ltn__commenter-img">
-                                                        <img src="img/testimonial/1.jpg" alt="Image">
-                                                    </div>
-                                                    <div class="ltn__commenter-comment">
-                                                        <h6><a href="#">Adam Smit</a></h6>
-                                                        <span class="comment-date">20th May 2020</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Doloribus, omnis fugit corporis iste magnam ratione.</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- comment-reply -->
-                                <div class="ltn__comment-reply-area ltn__form-box mb-60">
-                                    <form action="#">
-                                        <h4 class="title-2">Bình Luận</h4>
-                                        <div class="input-item input-item-textarea ltn__custom-icon">
-                                            <textarea placeholder="Nhập bình luận..."></textarea>
-                                        </div>
-                                        <div class="btn-wrapper" style="float: right; margin-top: 0;">
-                                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit"><i
-                                                    class="far fa-comments"></i> Đăng</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
