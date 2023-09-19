@@ -23,5 +23,9 @@ class AuthMiddleware:
         if user.is_authenticated and path == '/khach-hang/dang-ky/':
             return redirect('customer')
         
+        if not user.is_authenticated and path.startswith('/khach-hang/don-hang/'):
+            return redirect('customer_login')
+        
+
         response = self.get_response(request)
         return response

@@ -33,96 +33,67 @@
                 <div class="ltn__product-tab-area">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="ltn__tab-menu-list mb-50">
                                     <div class="nav">
-                                        <a class="active show" data-bs-toggle="tab" href="#liton_tab_1_1">Trang Chủ <i class="fas fa-home"></i></a>
                                         <a data-bs-toggle="tab" href="#liton_tab_1_2">Đơn Hàng <i class="fas fa-file-alt"></i></a>
-                                        <a data-bs-toggle="tab" href="#liton_tab_1_4">Địa Chỉ <i class="fas fa-map-marker-alt"></i></a>
-                                        <a data-bs-toggle="tab" href="#liton_tab_1_5">Cá Nhân<i class="fas fa-user"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_4">Thông Tin <i class="fas fa-user"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_5">Cài Đặt <i class="fas fa-user"></i></a>
                                         <a href="{% url 'customer_logout' %}">Đăng Xuất <i class="fas fa-sign-out-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade active show" id="liton_tab_1_1">
-                                        <div class="ltn__myaccount-tab-content-inner">
-                                            <p>Xin chào <strong>{{ user.username }}</strong> (nếu không phải <strong>{{ user.username }}</strong>? <small><a href="{% url 'customer_logout' %}">Đăng Xuất</a></small> )</p>
-                                            <p>Tại trang thông tin cá nhân này của khách hàng <span>bạn có thể xem</span> và quản lý các đơn hàng <span>và thay đổi cũng như cập nhật thông tin cá nhân của bạn trong hệ thống</span>.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="liton_tab_1_2">
+                                    <div class="tab-pane fade active show" id="liton_tab_1_2">
                                         <div class="ltn__myaccount-tab-content-inner">
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Order</th>
-                                                            <th>Date</th>
-                                                            <th>Status</th>
-                                                            <th>Total</th>
-                                                            <th>Action</th>
+                                                            <th>Mã Đơn</th>
+                                                            <th>Ngày Đặt</th>
+                                                            <th>Địa Chỉ</th>
+                                                            <th>Trạng Thái</th>
+                                                            <th>Tổng Tiền</th>
+                                                            <th>Hủy Đơn</th>
+                                                            <th>Xem Đơn</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Jun 22, 2019</td>
-                                                            <td>Pending</td>
-                                                            <td>$3000</td>
-                                                            <td><a href="cart.html">View</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Nov 22, 2019</td>
-                                                            <td>Approved</td>
-                                                            <td>$200</td>
-                                                            <td><a href="cart.html">View</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Jan 12, 2020</td>
-                                                            <td>On Hold</td>
-                                                            <td>$990</td>
-                                                            <td><a href="cart.html">View</a></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="liton_tab_1_3">
-                                        <div class="ltn__myaccount-tab-content-inner">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Product</th>
-                                                            <th>Date</th>
-                                                            <th>Expire</th>
-                                                            <th>Download</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service PSD Template</td>
-                                                            <td>Nov 22, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service HTML Template</td>
-                                                            <td>Nov 10, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Carsafe - Car Service WordPress Theme</td>
-                                                            <td>Nov 12, 2020</td>
-                                                            <td>Yes</td>
-                                                            <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                        </tr>
+                                                        {% for item in donhang %}
+                                                            <tr>
+                                                                <td>ĐH#000{{ item.id }}</td>
+                                                                <td>{{ item.ThoiGian }}</td>
+                                                                <td>{{ item.DiaChi }}</td>
+                                                                <td>
+                                                                    {% if item.TrangThai == "cxl" %}
+                                                                        Chưa xử lý
+                                                                    {% elif item.TrangThai == "dxl" %}
+                                                                        Đã xử lý
+                                                                    {% elif item.TrangThai == "dcbh" %}
+                                                                        Đang Chuẩn Bị Hàng
+                                                                    {% elif item.TrangThai == "dgh" %}
+                                                                        Đang Giao Hàng
+                                                                    {% elif item.TrangThai == "dghh" %}
+                                                                        Đã Giao Hàng
+                                                                    {% elif item.TrangThai == "khh" %}
+                                                                        Khách Hàng Hủy
+                                                                    {% elif item.TrangThai == "adh" %}
+                                                                        Admin Hủy
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>{{ item.TongTien }}</td>
+                                                                <td>
+                                                                    {% if item.TrangThai != "khh" and item.TrangThai != "adh" %}
+                                                                        <a href="{% url 'customer_order_cancel' id=item.id %}">HỦY</a>
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{% url 'customer_order_detail' id=item.id %}">XEM</a>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -130,24 +101,22 @@
                                     </div>
                                     <div class="tab-pane fade" id="liton_tab_1_4">
                                         <div class="ltn__myaccount-tab-content-inner">
-                                            <p>The following addresses will be used on the checkout page by default.</p>
+                                            <p>Các địa chỉ sau sẽ được sử dụng mặc định trên trang thanh toán.</p>
                                             <div class="row">
                                                 <div class="col-md-6 col-12 learts-mb-30">
-                                                    <h4>Billing Address <small><a href="#">edit</a></small></h4>
+                                                    <h4>Thông Tin Khách Hàng <small></small></h4>
                                                     <address>
-                                                        <p><strong>Alex Tuntuni</strong></p>
-                                                        <p>1355 Market St, Suite 900 <br>
-                                                            San Francisco, CA 94103</p>
-                                                        <p>Mobile: (123) 456-7890</p>
+                                                        <p><strong>{{ khachhang.User.first_name }} {{ khachhang.User.last_name }}</strong></p>
+                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
+                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
+                                                        <p>Email: {{ khachhang.User.email }}</p>
                                                     </address>
                                                 </div>
                                                 <div class="col-md-6 col-12 learts-mb-30">
-                                                    <h4>Shipping Address <small><a href="#">edit</a></small></h4>
+                                                    <h4>Thông Tin Giao Hàng <small></small></h4>
                                                     <address>
-                                                        <p><strong>Alex Tuntuni</strong></p>
-                                                        <p>1355 Market St, Suite 900 <br>
-                                                            San Francisco, CA 94103</p>
-                                                        <p>Mobile: (123) 456-7890</p>
+                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
+                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
                                                     </address>
                                                 </div>
                                             </div>
@@ -155,42 +124,53 @@
                                     </div>
                                     <div class="tab-pane fade" id="liton_tab_1_5">
                                         <div class="ltn__myaccount-tab-content-inner mb-50">
-                                            <p>The following addresses will be used on the checkout page by default.</p>
+                                            <p>Các địa chỉ sau sẽ được sử dụng mặc định trên trang thanh toán.</p>
                                             <div class="ltn__form-box">
-                                                <form action="#">
+                                                <form method="POST">
+                                                    {% if success %}
+                                                        <p style="color: #010101; font-weight: 400;">{{ success }}</p>
+                                                    {% endif %}
+                                                    {% if message %}
+                                                        <p style="color: #e55472; font-weight: 400;">{{ message }}</p>
+                                                    {% endif %}
+                                                    {% csrf_token %}
                                                     <div class="row mb-50">
                                                         <div class="col-md-6">
-                                                            <label>First name:</label>
-                                                            <input type="text" name="ltn__name">
+                                                            <label>Họ đệm:</label>
+                                                            <input type="text" name="first_name" placeholder="Nhập họ đệm..." value="{{ khachhang.User.first_name }}" required>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Last name:</label>
-                                                            <input type="text" name="ltn__lastname">
+                                                            <label>Tên:</label>
+                                                            <input type="text" name="last_name" placeholder="Nhập tên..." value="{{ khachhang.User.last_name }}" required>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Display Name:</label>
-                                                            <input type="text" name="ltn__lastname" placeholder="Ethan">
+                                                            <label>Số điện thoại:</label>
+                                                            <input type="text" name="phone" placeholder="Nhập số điện thoại..." value="{{ khachhang.SoDienThoai }}" required>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label>Display Email:</label>
-                                                            <input type="email" name="ltn__lastname" placeholder="example@example.com">
+                                                            <label>Email:</label>
+                                                            <input type="email" name="email" placeholder="Nhập email..." value="{{ khachhang.User.email }}">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label>Địa chỉ nhận hàng:</label>
+                                                            <input type="text" name="address" placeholder="Xóm/Ngõ, Thôn/Phố, Phường/Xã, Quận/Huyện, Tỉnh/Thành Phố" value="{{ khachhang.DiaChi }}">
                                                         </div>
                                                     </div>
                                                     <fieldset>
-                                                        <legend>Password change</legend>
+                                                        <legend style="float: unset;">Thay Đổi Mật Khẩu?</legend>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <label>Current password (leave blank to leave unchanged):</label>
-                                                                <input type="password" name="ltn__name">
-                                                                <label>New password (leave blank to leave unchanged):</label>
-                                                                <input type="password" name="ltn__lastname">
-                                                                <label>Confirm new password:</label>
-                                                                <input type="password" name="ltn__lastname">
+                                                                <label>Mật khẩu hiện tại:</label>
+                                                                <input type="password" name="old_password" placeholder="Nhập mật khẩu hiện tại...">
+                                                                <label>Mật khẩu mới:</label>
+                                                                <input type="password" name="new_password" placeholder="Nhập mật khẩu mới...">
+                                                                <label>Xác nhận mật khẩu:</label>
+                                                                <input type="password" name="new_password2" placeholder="Xác nhận mật khẩu mới...">
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                                     <div class="btn-wrapper">
-                                                        <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Save Changes</button>
+                                                        <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Cập Nhật</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -206,4 +186,15 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+{% if success or message %}
+    <script>
+        $(document).ready(function(){
+            $("#liton_tab_1_2").removeClass("active show")
+            $("#liton_tab_1_5").addClass("active show")
+        })
+    </script>
+{% endif %}
+
 {% endblock content%}

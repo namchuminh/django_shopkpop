@@ -1,7 +1,7 @@
 from turtle import back
 from django.db import models
 from customer.models import KhachHang
-from product.models import SanPham
+from product.models import SanPham, MauSac
 
 # Create your models here.
 class DonHang(models.Model):
@@ -33,6 +33,7 @@ class DonHang(models.Model):
 class ChiTietDonHang(models.Model):
     DonHang = models.ForeignKey(DonHang, on_delete=models.CASCADE)
     SanPham = models.ForeignKey(SanPham, on_delete=models.CASCADE)
+    MauSac = models.ForeignKey(MauSac, on_delete=models.CASCADE, null=True, blank=True)
     GiaBan = models.IntegerField(null=True, blank=True)
     SoLuong = models.IntegerField(default=1)
     TongTien = models.IntegerField(null=True, blank=True)

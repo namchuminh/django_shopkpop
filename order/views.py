@@ -92,7 +92,7 @@ class PayCart(View):
             donhangthanhtoan = DonHang.objects.all().get(id=donhang.id)
             
             for item in giohang:
-                chitietdonhang = ChiTietDonHang.objects.create(DonHang=donhangthanhtoan, SanPham=item.SanPham, SoLuong=item.SoLuong)
+                chitietdonhang = ChiTietDonHang.objects.create(DonHang=donhangthanhtoan, SanPham=item.SanPham, SoLuong=item.SoLuong, MauSac=item.MauSac)
                 chitietdonhang.save()
             
             giohang.delete()

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2023 at 07:45 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Sep 19, 2023 at 11:03 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auth_group` (
   `id` int(11) NOT NULL,
-  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -52,9 +52,9 @@ CREATE TABLE `auth_group_permissions` (
 
 CREATE TABLE `auth_permission` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
   `content_type_id` int(11) NOT NULL,
-  `codename` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `codename` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -163,13 +163,13 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 
 CREATE TABLE `auth_user` (
   `id` int(11) NOT NULL,
-  `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(128) NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL
@@ -180,7 +180,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$320000$RQko2mlNvgIJE1sc8lAlm2$kKdOKU8skgBG3xSDa1xdckUTuKnys0hx3ONqQP3ZTjs=', '2023-07-02 04:54:42.506392', 1, 'admin', 'Nam Chu', 'Minh', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.000000'),
+(1, 'pbkdf2_sha256$600000$ueQHw1JZxi13n6PbN74zpK$GXzdQMNcCLEOKpgTrRefyd3giTVJLxsUCDTUxEL39PA=', '2023-09-08 03:19:19.099862', 1, 'admin', 'Nam Chu', 'Minh', 'chuminhnamma@gmail.com', 1, 1, '2023-06-13 23:20:32.000000'),
 (2, 'pbkdf2_sha256$320000$4MS3iZ4Tp9gpTkuB4Y7ZvE$gGoIQCUBaF2YJPeCZ9FPfojGjueHkKBav535GrT0HR8=', '2023-06-22 12:16:07.109468', 0, 'nam', 'Chu Minh', 'Nam', 'namchuminh@gmail.com', 0, 1, '2023-06-22 10:17:55.648828'),
 (3, 'pbkdf2_sha256$320000$3jmllDEOOrucsOVyKZw1u9$TRUsXbP6qDUoSDQoQUQ089m/DunFo4esM+6Q5d6/LJQ=', '2023-06-22 14:06:08.440898', 0, 'nam2', 'a', 'a', 'a@gmail.com', 0, 1, '2023-06-22 10:21:52.025011');
 
@@ -219,10 +219,10 @@ CREATE TABLE `cart_giohang` (
   `KhachHang_id` bigint(20) NOT NULL,
   `GiaBan` int(11) DEFAULT NULL,
   `MauSac_id` bigint(20) DEFAULT NULL,
-  `MoTaNgan` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MoTaNgan` longtext DEFAULT NULL,
   `SanPham_id` bigint(20) DEFAULT NULL,
   `SoLuong` int(11) NOT NULL,
-  `TenSanPham` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `TenSanPham` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -230,9 +230,7 @@ CREATE TABLE `cart_giohang` (
 --
 
 INSERT INTO `cart_giohang` (`id`, `KhachHang_id`, `GiaBan`, `MauSac_id`, `MoTaNgan`, `SanPham_id`, `SoLuong`, `TenSanPham`) VALUES
-(49, 3, 250000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 2, 1, 'ALBUM ENHYPEN - DARK BLOOD ydsgdfs'),
-(50, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 15, 1, 'ALBUM ENHYPEN - DARK BLOOD TYUI'),
-(51, 3, 200000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 14, 1, 'ALBUM ENHYPEN - DARK BLOOD IUDFGOI');
+(52, 3, 250000, NULL, '- CD-R : W120*H120 (mm)\r\n- PHOTOBOOK : 1ea by version / W175*H245 (mm) / 92p\r\n- PHOTO CARD : Random 1 out of 7 by version / W54*H86 (mm)', 2, 1, 'ALBUM ENHYPEN - DARK BLOOD ydsgdfs');
 
 -- --------------------------------------------------------
 
@@ -242,11 +240,11 @@ INSERT INTO `cart_giohang` (`id`, `KhachHang_id`, `GiaBan`, `MauSac_id`, `MoTaNg
 
 CREATE TABLE `contact_lienhe` (
   `id` bigint(20) NOT NULL,
-  `TenKhachHang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `TieuDe` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `NoiDung` longtext COLLATE utf8_unicode_ci NOT NULL
+  `TenKhachHang` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `TieuDe` varchar(500) NOT NULL,
+  `NoiDung` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -257,11 +255,11 @@ CREATE TABLE `contact_lienhe` (
 
 CREATE TABLE `customer_khachhang` (
   `id` bigint(20) NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DiaChi` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `GioiTinh` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `SoDienThoai` varchar(11) DEFAULT NULL,
+  `DiaChi` varchar(500) DEFAULT NULL,
+  `GioiTinh` varchar(10) NOT NULL,
   `User_id` int(11) NOT NULL,
-  `DuongDan` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `DuongDan` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -269,7 +267,7 @@ CREATE TABLE `customer_khachhang` (
 --
 
 INSERT INTO `customer_khachhang` (`id`, `SoDienThoai`, `DiaChi`, `GioiTinh`, `User_id`, `DuongDan`) VALUES
-(3, '0999999999', 'Hà Nội', '1', 1, '1'),
+(3, '0999999999', 'Hà Nội', '1', 1, 'nam-chu-minh-1'),
 (4, '0999999999', NULL, '1', 3, 'a-a-3');
 
 -- --------------------------------------------------------
@@ -281,10 +279,10 @@ INSERT INTO `customer_khachhang` (`id`, `SoDienThoai`, `DiaChi`, `GioiTinh`, `Us
 CREATE TABLE `django_admin_log` (
   `id` int(11) NOT NULL,
   `action_time` datetime(6) NOT NULL,
-  `object_id` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `object_repr` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `object_id` longtext DEFAULT NULL,
+  `object_repr` varchar(200) NOT NULL,
   `action_flag` smallint(5) UNSIGNED NOT NULL CHECK (`action_flag` >= 0),
-  `change_message` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `change_message` longtext NOT NULL,
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -477,7 +475,15 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (181, '2023-07-02 05:02:22.592733', '3', 'Blue', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
 (182, '2023-07-02 05:02:29.400869', '2', 'Green', 2, '[{\"changed\": {\"fields\": [\"TenMauSac\"]}}]', 8, 1),
 (183, '2023-07-02 05:08:14.203564', '15', 'ALBUM ENHYPEN - DARK BLOOD TYUI', 2, '[{\"changed\": {\"fields\": [\"MoTaDai\"]}}]', 9, 1),
-(184, '2023-07-02 05:11:56.036203', '15', 'ALBUM ENHYPEN - DARK BLOOD TYUI', 2, '[{\"changed\": {\"fields\": [\"MoTaDai\"]}}]', 9, 1);
+(184, '2023-07-02 05:11:56.036203', '15', 'ALBUM ENHYPEN - DARK BLOOD TYUI', 2, '[{\"changed\": {\"fields\": [\"MoTaDai\"]}}]', 9, 1),
+(185, '2023-09-07 15:50:49.424166', '3', 'Mã Đơn Hàng: 3 - Khách Hàng: Nam Chu Minh - Tổng Tiền: 451500 - Thời Gian: 2023-07-01 17:19:51', 2, '[{\"changed\": {\"fields\": [\"TrangThai\"]}}]', 23, 1),
+(186, '2023-09-07 15:51:44.812625', '4', 'Mã Đơn Hàng: 4 - Khách Hàng: Nam Chu Minh - Tổng Tiền: 241500 - Thời Gian: 2023-07-01 17:29:05', 2, '[]', 23, 1),
+(187, '2023-09-07 15:51:50.416346', '3', 'Mã Đơn Hàng: 3 - Khách Hàng: Nam Chu Minh - Tổng Tiền: 451500 - Thời Gian: 2023-07-01 17:19:51', 2, '[]', 23, 1),
+(188, '2023-09-07 15:52:45.710289', '4', 'Mã Đơn Hàng: 4 - Khách Hàng: Nam Chu Minh - Tổng Tiền: 241500 - Thời Gian: 2023-07-01 17:29:05', 2, '[{\"changed\": {\"fields\": [\"TrangThai\"]}}]', 23, 1),
+(189, '2023-09-07 23:01:02.211012', '14', 'Mã Đơn Hàng: 3 - Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD KHJKJG - Giá Bán: 200000 - Số Lượng: 1 - Tổng Tiền: 200000', 2, '[{\"changed\": {\"fields\": [\"MauSac\"]}}]', 22, 1),
+(190, '2023-09-07 23:01:06.015566', '14', 'Mã Đơn Hàng: 3 - Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD KHJKJG - Giá Bán: 200000 - Số Lượng: 1 - Tổng Tiền: 200000', 2, '[]', 22, 1),
+(191, '2023-09-07 23:01:09.547857', '13', 'Mã Đơn Hàng: 3 - Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD IUDFGOI - Giá Bán: 200000 - Số Lượng: 1 - Tổng Tiền: 200000', 2, '[{\"changed\": {\"fields\": [\"MauSac\"]}}]', 22, 1),
+(192, '2023-09-07 23:01:12.752814', '15', 'Mã Đơn Hàng: 4 - Sản Phẩm: ALBUM ENHYPEN - DARK BLOOD TYUI - Giá Bán: 200000 - Số Lượng: 1 - Tổng Tiền: 200000', 2, '[{\"changed\": {\"fields\": [\"MauSac\"]}}]', 22, 1);
 
 -- --------------------------------------------------------
 
@@ -487,8 +493,8 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 
 CREATE TABLE `django_content_type` (
   `id` int(11) NOT NULL,
-  `app_label` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `model` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -528,8 +534,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 
 CREATE TABLE `django_migrations` (
   `id` bigint(20) NOT NULL,
-  `app` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `app` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -599,7 +605,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (59, 'order', '0005_alter_donhang_trangthai', '2023-07-01 17:04:51.039199'),
 (60, 'order', '0006_alter_donhang_trangthai', '2023-07-01 17:06:05.300276'),
 (61, 'order', '0007_alter_donhang_trangthai', '2023-07-01 17:08:59.124619'),
-(62, 'product', '0008_alter_sanpham_motadai', '2023-07-02 05:05:22.294263');
+(62, 'product', '0008_alter_sanpham_motadai', '2023-07-02 05:05:22.294263'),
+(63, 'order', '0008_chitietdonhang_mausac', '2023-09-07 22:58:27.048579');
 
 -- --------------------------------------------------------
 
@@ -608,8 +615,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 --
 
 CREATE TABLE `django_session` (
-  `session_key` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `session_data` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -620,6 +627,7 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('hmss158a2wfntfqswnmuc218nsqfpp2i', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qCLAD:tvX0OPlLeSwRbdu1i7XqPZehzJZfDxFM2YRR3wH7sqA', '2023-07-06 14:19:57.578255'),
 ('l0h04vvy7o1i1kgzrk55xshndo6ohzrd', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qEDYo:oNTzqN1YCYs8WK2T02sgP20sK5NlUgOUYi0G1ioJe4U', '2023-07-11 18:37:06.094192'),
+('pdo4j04kzg1r6v3rheqv5i436vf9py19', '.eJxVjEEOwiAQRe_C2hApyDAu3XuGBoYZqRpISrsy3l2bdKHb_977LzXGdSnj2nkep6zOyqjD75YiPbhuIN9jvTVNrS7zlPSm6J12fW2Zn5fd_TsosZdv7cX6iE4G4zw6ELRRgjcIJwByjJQzITpPg80JExwZkC0EzxKCmKTeH89HN7c:1qeS1f:uDNaHeXwQhBsCpBAeVKaa7Jqgt1RxiPW7oYXvytT3Kg', '2023-09-22 03:19:19.102854'),
 ('v3le70rpb55fqkv82p9dne2lsj1xqagm', '.eJxVjL0KwzAQg9_FczE-_6dj9zyDOduXOm1xIE6m0ndvDBla0CD0SXqzgPtWwt5oDXNmVwbs8ptFTE-qHeQH1vvC01K3dY68V_hJGx-XTK_b2f07KNhKXxtwgqxUOMhDVqEDYdA6r3AylAG8yqgP44WkONgo9KRIQ3TCRZvY5wvFbzdf:1qFp6g:YGpQCVJMTtmaHfB1CEo-GTuffGasod32je4tmHw28vI', '2023-07-16 04:54:42.516578');
 
 -- --------------------------------------------------------
@@ -630,13 +638,13 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 
 CREATE TABLE `news_tintuc` (
   `id` bigint(20) NOT NULL,
-  `TieuDe` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `NoiDung` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `AnhChinh` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `The` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TieuDe` varchar(500) NOT NULL,
+  `NoiDung` longtext NOT NULL,
+  `AnhChinh` varchar(100) NOT NULL,
+  `The` varchar(255) NOT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
-  `DuongDan` varchar(550) COLLATE utf8_unicode_ci DEFAULT NULL
+  `DuongDan` varchar(550) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -666,17 +674,21 @@ CREATE TABLE `order_chitietdonhang` (
   `SoLuong` int(11) NOT NULL,
   `TongTien` int(11) DEFAULT NULL,
   `DonHang_id` bigint(20) NOT NULL,
-  `SanPham_id` bigint(20) NOT NULL
+  `SanPham_id` bigint(20) NOT NULL,
+  `MauSac_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `order_chitietdonhang`
 --
 
-INSERT INTO `order_chitietdonhang` (`id`, `GiaBan`, `SoLuong`, `TongTien`, `DonHang_id`, `SanPham_id`) VALUES
-(13, 200000, 1, 200000, 3, 14),
-(14, 200000, 1, 200000, 3, 13),
-(15, 200000, 1, 200000, 4, 15);
+INSERT INTO `order_chitietdonhang` (`id`, `GiaBan`, `SoLuong`, `TongTien`, `DonHang_id`, `SanPham_id`, `MauSac_id`) VALUES
+(13, 200000, 1, 200000, 3, 14, 2),
+(14, 200000, 1, 200000, 3, 13, 1),
+(15, 200000, 1, 200000, 4, 15, 5),
+(16, 250000, 1, 250000, 5, 2, 3),
+(17, 200000, 1, 200000, 5, 15, 4),
+(18, 200000, 1, 200000, 5, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -686,13 +698,13 @@ INSERT INTO `order_chitietdonhang` (`id`, `GiaBan`, `SoLuong`, `TongTien`, `DonH
 
 CREATE TABLE `order_donhang` (
   `id` bigint(20) NOT NULL,
-  `SoDienThoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `DiaChi` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `SoDienThoai` varchar(11) NOT NULL,
+  `DiaChi` varchar(11) NOT NULL,
   `TongTien` int(11) NOT NULL,
   `ThoiGian` datetime(6) NOT NULL,
-  `TrangThai` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `TrangThai` varchar(25) NOT NULL,
   `KhachHang_id` bigint(20) NOT NULL,
-  `GhiChu` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL
+  `GhiChu` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -700,8 +712,9 @@ CREATE TABLE `order_donhang` (
 --
 
 INSERT INTO `order_donhang` (`id`, `SoDienThoai`, `DiaChi`, `TongTien`, `ThoiGian`, `TrangThai`, `KhachHang_id`, `GhiChu`) VALUES
-(3, '0999999999', 'Hà Nội', 451500, '2023-07-01 17:19:51.497488', 'dcbh', 3, ''),
-(4, '0999999999', 'Hà Nội', 241500, '2023-07-01 17:29:05.790087', 'cxl', 3, '');
+(3, '0999999999', 'Hà Nội', 451500, '2023-07-01 17:19:51.497488', 'khh', 3, ''),
+(4, '0999999999', 'Hà Nội', 241500, '2023-07-01 17:29:05.790087', 'khh', 3, ''),
+(5, '0999999999', 'Hà Nội 2', 714000, '2023-09-07 23:02:35.291422', 'khh', 3, '2');
 
 -- --------------------------------------------------------
 
@@ -711,11 +724,11 @@ INSERT INTO `order_donhang` (`id`, `SoDienThoai`, `DiaChi`, `TongTien`, `ThoiGia
 
 CREATE TABLE `product_chuyenmuc` (
   `id` bigint(20) NOT NULL,
-  `TenChuyenMuc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `DuongDan` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TenChuyenMuc` varchar(255) NOT NULL,
+  `DuongDan` varchar(50) DEFAULT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `HinhAnh` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -733,8 +746,8 @@ INSERT INTO `product_chuyenmuc` (`id`, `TenChuyenMuc`, `DuongDan`, `created_at`,
 
 CREATE TABLE `product_mausac` (
   `id` bigint(20) NOT NULL,
-  `TenMauSac` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MaMauSac` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TenMauSac` varchar(255) NOT NULL,
+  `MaMauSac` varchar(255) NOT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -759,17 +772,17 @@ INSERT INTO `product_mausac` (`id`, `TenMauSac`, `MaMauSac`, `created_at`, `upda
 
 CREATE TABLE `product_sanpham` (
   `id` bigint(20) NOT NULL,
-  `TenSanPham` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TenSanPham` varchar(255) NOT NULL,
   `GiaKhuyenMai` int(11) NOT NULL,
   `GiaBan` int(11) NOT NULL,
-  `MoTaNgan` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `MoTaDai` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `The` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `AnhChinh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `AnhPhu1` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `AnhPhu2` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `AnhPhu3` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DuongDan` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MoTaNgan` longtext NOT NULL,
+  `MoTaDai` longtext NOT NULL,
+  `The` varchar(255) NOT NULL,
+  `AnhChinh` varchar(100) DEFAULT NULL,
+  `AnhPhu1` varchar(100) DEFAULT NULL,
+  `AnhPhu2` varchar(100) DEFAULT NULL,
+  `AnhPhu3` varchar(100) DEFAULT NULL,
+  `DuongDan` varchar(50) DEFAULT NULL,
   `TrangThai` tinyint(1) NOT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
@@ -855,7 +868,7 @@ INSERT INTO `product_sanpham_mausac` (`id`, `sanpham_id`, `mausac_id`) VALUES
 
 CREATE TABLE `website_bannerbottom` (
   `id` bigint(20) NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL,
   `HienThi` tinyint(1) NOT NULL,
   `ChuyenMuc_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -875,7 +888,7 @@ INSERT INTO `website_bannerbottom` (`id`, `HinhAnh`, `HienThi`, `ChuyenMuc_id`) 
 
 CREATE TABLE `website_bannermid` (
   `id` bigint(20) NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL,
   `HienThi` tinyint(1) NOT NULL,
   `ChuyenMuc_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -897,7 +910,7 @@ INSERT INTO `website_bannermid` (`id`, `HinhAnh`, `HienThi`, `ChuyenMuc_id`) VAL
 
 CREATE TABLE `website_bannertop` (
   `id` bigint(20) NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL,
   `HienThi` tinyint(1) NOT NULL,
   `ChuyenMuc_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -920,8 +933,8 @@ INSERT INTO `website_bannertop` (`id`, `HinhAnh`, `HienThi`, `ChuyenMuc_id`) VAL
 
 CREATE TABLE `website_loaithongtin` (
   `id` bigint(20) NOT NULL,
-  `TenLoai` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MaLoai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `TenLoai` varchar(255) NOT NULL,
+  `MaLoai` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -947,8 +960,8 @@ INSERT INTO `website_loaithongtin` (`id`, `TenLoai`, `MaLoai`) VALUES
 
 CREATE TABLE `website_nhataitro` (
   `id` bigint(20) NOT NULL,
-  `TenNhaTaiTro` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `TenNhaTaiTro` varchar(255) NOT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -971,10 +984,10 @@ INSERT INTO `website_nhataitro` (`id`, `TenNhaTaiTro`, `HinhAnh`) VALUES
 
 CREATE TABLE `website_slide` (
   `id` bigint(20) NOT NULL,
-  `TieuDe` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MoTaNgan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `MoTaDai` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TieuDe` varchar(255) NOT NULL,
+  `MoTaNgan` varchar(255) NOT NULL,
+  `MoTaDai` varchar(255) NOT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL,
   `ChuyenMuc_id` bigint(20) NOT NULL,
   `HienThi` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -995,8 +1008,8 @@ INSERT INTO `website_slide` (`id`, `TieuDe`, `MoTaNgan`, `MoTaDai`, `HinhAnh`, `
 
 CREATE TABLE `website_thongtin` (
   `id` bigint(20) NOT NULL,
-  `GiaTri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `HinhAnh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `GiaTri` varchar(255) DEFAULT NULL,
+  `HinhAnh` varchar(100) DEFAULT NULL,
   `LoaiThongTin_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1128,7 +1141,8 @@ ALTER TABLE `news_tintuc`
 ALTER TABLE `order_chitietdonhang`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_chitietdonhang_DonHang_id_1115646e_fk_order_donhang_id` (`DonHang_id`),
-  ADD KEY `order_chitietdonhang_SanPham_id_c606706e_fk_product_sanpham_id` (`SanPham_id`);
+  ADD KEY `order_chitietdonhang_SanPham_id_c606706e_fk_product_sanpham_id` (`SanPham_id`),
+  ADD KEY `order_chitietdonhang_MauSac_id_cf199770_fk_product_mausac_id` (`MauSac_id`);
 
 --
 -- Indexes for table `order_donhang`
@@ -1258,7 +1272,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `cart_giohang`
 --
 ALTER TABLE `cart_giohang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `contact_lienhe`
@@ -1276,7 +1290,7 @@ ALTER TABLE `customer_khachhang`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -1288,7 +1302,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `news_tintuc`
@@ -1300,13 +1314,13 @@ ALTER TABLE `news_tintuc`
 -- AUTO_INCREMENT for table `order_chitietdonhang`
 --
 ALTER TABLE `order_chitietdonhang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `order_donhang`
 --
 ALTER TABLE `order_donhang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_chuyenmuc`
@@ -1431,6 +1445,7 @@ ALTER TABLE `django_admin_log`
 --
 ALTER TABLE `order_chitietdonhang`
   ADD CONSTRAINT `order_chitietdonhang_DonHang_id_1115646e_fk_order_donhang_id` FOREIGN KEY (`DonHang_id`) REFERENCES `order_donhang` (`id`),
+  ADD CONSTRAINT `order_chitietdonhang_MauSac_id_cf199770_fk_product_mausac_id` FOREIGN KEY (`MauSac_id`) REFERENCES `product_mausac` (`id`),
   ADD CONSTRAINT `order_chitietdonhang_SanPham_id_c606706e_fk_product_sanpham_id` FOREIGN KEY (`SanPham_id`) REFERENCES `product_sanpham` (`id`);
 
 --
