@@ -17,7 +17,7 @@ def thongtin_context_processor(request):
     return {'thongtin_load': thongtin_load}
 
 def giohang_context_processor(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_superuser == False:
         user = User.objects.all().get(id=request.user.id)
         khachhang = KhachHang.objects.all().get(User=user)
         giohang_load = GioHang.objects.all().filter(KhachHang=khachhang)
